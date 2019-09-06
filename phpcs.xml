@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ruleset name="Coding Standards">
+	<arg value="svn"/>
+	<arg name="extensions" value="php"/>
+
+	<file>/</file>
+	<exclude-pattern>./html/*</exclude-pattern>
+	<exclude-pattern>./vendor/*</exclude-pattern>
+
+	<rule ref="WordPress">
+		<exclude name="PEAR.Functions.FunctionCallSignature"/>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="sometheme" />
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="is_theme" value="true" />
+		</properties>
+	</rule>
+
+	<config name="minimum_supported_wp_version" value="5.2.3"/>
+
+
+	<config name="testVersion" value="7.2-99.0"/>
+	<rule ref="PHPCompatibility"/>
+</ruleset>

@@ -1,0 +1,135 @@
+{
+  "name": "sometheme",
+  "version": "1.0.0",
+  "description": "A theme for WordPress",
+  "scripts": {
+    "docker-clean": "docker-compose down -v --remove-orphans",
+    "bash": "docker-compose run wordpress /bin/bash",
+    "savedb": "npm start && docker-compose exec mysql sh -c 'exec mysqldump --all-databases -uroot -p\"$MYSQL_ROOT_PASSWORD\"' > ./initdb/data.sql",
+    "wp": "npm start && docker run -it --rm --volumes-from wordpress --network container:wordpress wordpress:cli",
+    "update": "brew update && brew upgrade ; npm update -g && npm update ; composer self-update && composer update ; docker-compose pull",
+    "docker-save-down": "npm run savedb && npm run docker-clean",
+    "start": "./bin/docker-ready.sh",
+    "stop": "docker-compose down",
+    "gulp": "gulp",
+    "build": "npm run gulp build",
+    "dev": "npm start && npm run gulp dev",
+    "preinstall": "npm run add-localhost && npm run add-ssl",
+    "postinstall": "npm start && docker-compose down && composer install",
+    "add-localhost": "URL=www.wordpress.org.test ; grep -qxF \"127.0.0.1\t${URL}\" /etc/hosts && echo 'host record already exists' || ( echo \"127.0.0.1\t$URL\n\" | sudo tee -a /etc/hosts > /dev/null && echo 'host record added' )",
+    "add-ssl": "./bin/ssl.sh",
+    "remove-ca": "npm run remove-ca:remove-trust-cert && rm -R ~/.localssl",
+    "remove-ca:remove-trust-cert": "security find-certificate -c 'Localhost SSL' -a -Z | sudo awk '/SHA-1/{system(\"security delete-certificate -Z \"$NF)}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:WraithKenny/local-ssl.git"
+  },
+  "keywords": [
+    "WordPress",
+    "Docker",
+    "SSL"
+  ],
+  "author": "Ken Newman",
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://unfocus.com",
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "usage",
+          "corejs": 3
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime"
+      ]
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": true,
+      "cssnano": true
+    }
+  },
+  "eslintConfig": {
+    "extends": "wordpress",
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    }
+  },
+  "eslintIgnore": [
+    "**/*.min.js",
+    "html/*",
+    "node_modules/*",
+    "vendor/*",
+    "bower_components/*"
+  ],
+  "stylelint": {
+    "extends": "stylelint-config-wordpress",
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "rules": {
+      "no-descending-specificity": null,
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true
+    },
+    "ignoreFiles": [
+      ".git/*",
+      "**/*.min.css",
+      "html/*",
+      "node_modules/*",
+      "vendor/*",
+      "bower_components/*",
+      "sometheme/css/*"
+    ]
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "normalize.css": "^8.0.1",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "@wordpress/babel-preset-default": "^4.5.0",
+    "@wordpress/browserslist-config": "^2.6.0",
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "browserslist": "^4.7.0",
+    "caniuse-lite": "^1.0.30000989",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.3.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "file-loader": "^4.2.0",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.12.0",
+    "postcss": "^7.0.18",
+    "stylelint": "^10.1.0",
+    "stylelint-config-wordpress": "^14.0.0",
+    "stylelint-scss": "^3.10.1",
+    "through2": "^3.0.1",
+    "webpack": "^4.39.3",
+    "webpack-dev-middleware": "^3.7.1",
+    "webpack-hot-middleware": "^2.25.0"
+  }
+}

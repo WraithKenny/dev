@@ -1,0 +1,23 @@
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+
+# don't commit NPM or Bower etc.
+node_modules
+bower_modules
+
+vendor/
+/html/
+/.htaccess
+/wp-config.php
+
+/ssl/localhost.crt
+/ssl/localhost.csr
+/ssl/localhost.key
+
+sometheme/css
+sometheme/js/bundle.min.js

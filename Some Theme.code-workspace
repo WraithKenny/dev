@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "Theme",
+			"path": "sometheme"
+		},
+		{
+			"name": "Root",
+			"path": "."
+		},
+		{
+			"name": "Docker Volume",
+			"path": "html"
+		}
+	],
+	"settings": {}
+}
