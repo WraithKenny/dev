@@ -35,6 +35,7 @@ services:
       - data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: wordpress
 
   phpmyadmin:
     depends_on:

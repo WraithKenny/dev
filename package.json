@@ -5,7 +5,7 @@
   "scripts": {
     "docker-clean": "docker-compose down -v --remove-orphans",
     "bash": "docker-compose run wordpress /bin/bash",
-    "savedb": "npm start && docker-compose exec mysql sh -c 'exec mysqldump --all-databases -uroot -p\"$MYSQL_ROOT_PASSWORD\"' > ./initdb/data.sql",
+    "savedb": "npm start && docker-compose exec mysql sh -c 'exec mysqldump wordpress -uroot -p\"$MYSQL_ROOT_PASSWORD\"' > ./initdb/data.sql",
     "wp": "npm start && docker run -it --rm --volumes-from wordpress --network container:wordpress wordpress:cli",
     "update": "brew update && brew upgrade ; npm update -g && npm update ; composer self-update && composer update ; docker-compose pull",
     "docker-save-down": "npm run savedb && npm run docker-clean",
