@@ -1,6 +1,8 @@
 # local-ssl for Mac.
 Creates a Local Certificate authority, generates local certs, and wires it up to *Docker Compose*.
 
+**You might to have to regenerate your SSL Certs if you want this to work on Mac 10.15** ***Sorry, but Apple did it.***
+
 ## Getting Started
 *Please don't run this on a PC. I have no idea what'll happen.*
 
