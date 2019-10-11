@@ -1,8 +1,13 @@
 {
+  "name": "someone/sometheme",
+  "type": "project",
+  "description": "Theme.",
+	"license": "UNLICENSED",
   "require-dev": {
-      "dealerdirect/phpcodesniffer-composer-installer": "*",
-      "phpcompatibility/php-compatibility": "*",
-      "wp-coding-standards/wpcs": "*"
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "phpcompatibility/php-compatibility": "*",
+    "wp-coding-standards/wpcs": "*",
+    "sirbrillig/phpcs-variable-analysis": "*"
   },
   "require": {
     "composer/installers": "*",
