@@ -7,7 +7,8 @@
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/php-compatibility": "*",
     "wp-coding-standards/wpcs": "*",
-    "sirbrillig/phpcs-variable-analysis": "*"
+    "sirbrillig/phpcs-variable-analysis": "*",
+    "wptrt/wpthemereview": "^0.2.0"
   },
   "require": {
     "composer/installers": "*",
