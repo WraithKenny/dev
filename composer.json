@@ -8,14 +8,22 @@
     "phpcompatibility/php-compatibility": "*",
     "wp-coding-standards/wpcs": "*",
     "sirbrillig/phpcs-variable-analysis": "*",
-    "wptrt/wpthemereview": "^0.2.0"
+    "wptrt/wpthemereview": "*"
   },
   "require": {
     "composer/installers": "*",
     "wpackagist-plugin/scripts-n-styles": "*",
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/debug-bar": "*",
-    "wpackagist-plugin/codepress-admin-columns": "*"
+    "wpackagist-plugin/codepress-admin-columns": "*",
+    "wpackagist-plugin/svg-support": "*",
+    "wpackagist-plugin/easy-theme-and-plugin-upgrades": "*",
+    "wpackagist-plugin/favicon-by-realfavicongenerator": "*",
+    "wpackagist-plugin/custom-post-type-ui": "*",
+    "wpackagist-plugin/regenerate-thumbnails": "*",
+    "wpackagist-plugin/wordpress-beta-tester": "*",
+    "wpackagist-plugin/enable-media-replace": "*"
+
   },
   "extra": {
     "installer-paths": {
