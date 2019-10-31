@@ -19,7 +19,8 @@
     "add-localhost": "URL=www.wordpress.org.test ; grep -qxF \"127.0.0.1\t${URL}\" /etc/hosts && echo 'host record already exists' || ( echo \"127.0.0.1\t$URL\n\" | sudo tee -a /etc/hosts > /dev/null && echo 'host record added' )",
     "add-ssl": "./bin/ssl.sh",
     "remove-ca": "npm run remove-ca:remove-trust-cert && rm -R ~/.localssl",
-    "remove-ca:remove-trust-cert": "security find-certificate -c 'Localhost SSL' -a -Z | sudo awk '/SHA-1/{system(\"security delete-certificate -Z \"$NF)}'"
+    "remove-ca:remove-trust-cert": "security find-certificate -c 'Localhost SSL' -a -Z | sudo awk '/SHA-1/{system(\"security delete-certificate -Z \"$NF)}'",
+    "fix-scss": "stylelint sometheme/sass/**/*.scss --fix"
   },
   "repository": {
     "type": "git",
@@ -98,7 +99,7 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
     "bootstrap": "^4.3.1",
-    "core-js": "^3.3.3",
+    "core-js": "^3.3.5",
     "jquery": "^3.4.1",
     "normalize.css": "^8.0.1",
     "popper.js": "^1.16.0"
@@ -113,10 +114,10 @@
     "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
     "browserslist": "^4.7.2",
-    "caniuse-lite": "^1.0.30001004",
+    "caniuse-lite": "^1.0.30001006",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-config-wordpress": "^2.0.0",
     "file-loader": "^4.2.0",
     "gulp": "^4.0.2",
@@ -124,9 +125,9 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "node-sass": "^4.13.0",
-    "postcss": "^7.0.19",
+    "postcss": "^7.0.21",
     "stylelint": "^11.1.1",
-    "stylelint-config-wordpress": "^14.0.0",
+    "stylelint-config-wordpress": "^15.0.0",
     "stylelint-scss": "^3.12.0",
     "through2": "^3.0.1",
     "webpack": "^4.41.2",
