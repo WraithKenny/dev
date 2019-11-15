@@ -67,3 +67,49 @@ add_action( 'after_setup_theme', function() {
 
 	add_theme_support( 'responsive-embeds' );
 } );
+
+require_once get_theme_file_path( 'tgmpa/class-tgm-plugin-activation.php' );
+add_action( 'tgmpa_register', function() {
+	tgmpa(
+		[
+			[
+				'name'             => 'TGM Example Plugin',
+				'slug'             => 'tgm-example-plugin',
+				'source'           => get_template_directory() . '/tgmpa/plugins/tgm-example-plugin.zip',
+				'required'         => true,
+				'version'          => '1.0.1',
+				'force_activation' => true,
+			],
+			[
+				'name'     => 'Advanced Custom Fields Pro',
+				'slug'     => 'advanced-custom-fields-pro',
+				'source'   => 'https://github.com/wp-premium/advanced-custom-fields-pro/archive/master.zip',
+				'required' => true,
+			],
+			[
+				'name'     => 'Scripts n Styles',
+				'slug'     => 'scripts-n-styles',
+				'required' => false,
+			],
+			[
+				'name'        => 'WordPress SEO by Yoast',
+				'slug'        => 'wordpress-seo',
+				'is_callable' => 'wpseo_init', // Checks for Plain or Premium.
+			],
+			[
+				'name'     => 'Admin Cols',
+				'slug'     => 'codepress-admin-columns',
+				'required' => false,
+			],
+		],
+		[
+			'id'           => 'sometheme',             // Unique ID for hashing notices for multiple instances of TGMPA.
+			'menu'         => 'tgmpa-install-plugins', // Menu slug.
+			'has_notices'  => true,                    // Show admin notices or not.
+			'dismissable'  => false,                    // If false, a user cannot dismiss the nag message.
+			'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+			'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+			'message'      => '',                      // Message to output right before the plugins table.
+		]
+	);
+} );

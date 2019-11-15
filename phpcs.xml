@@ -1,14 +1,23 @@
 <?xml version="1.0"?>
 <ruleset name="Coding Standards">
-	<arg value="svn"/>
+	<arg value="sv"/>
 	<arg name="parallel" value="8"/>
 	<arg name="cache"/>
 	<arg name="extensions" value="php"/>
 
-	<file>/</file>
-	<exclude-pattern>./html/*</exclude-pattern>
-	<exclude-pattern>./vendor/*</exclude-pattern>
-	<exclude-pattern>./node_modules/*</exclude-pattern>
+	<arg name="colors"/>
+
+	<file>./sometheme/</file>
+
+	<exclude-pattern>*/bin/*</exclude-pattern>
+	<exclude-pattern>/html/*</exclude-pattern>
+	<exclude-pattern>/initdb/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>/ssl/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/.git/*</exclude-pattern>
+
+	<exclude-pattern>*/class-tgm-plugin-activation.php</exclude-pattern>
 
 	<rule ref="WordPress-Extra"/>
 	<rule ref="WordPress-Docs"/>
@@ -29,7 +38,6 @@
 		<properties>
 			<property name="text_domain" type="array">
 				<element value="sometheme"/>
-				<element value="tgmpa"/>
 			</property>
 		</properties>
 	</rule>
@@ -52,7 +60,6 @@
 
 			<property name="prefixes" type="array">
 				<element value="sometheme"/>
-				<element value="tgmpa"/>
 			</property>
 		</properties>
 	</rule>

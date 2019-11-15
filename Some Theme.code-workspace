@@ -13,5 +13,16 @@
 			"path": "html"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"phpcs.showSources": true,
+		"phpcs.ignorePatterns": [
+			"*/bin/*",
+			"*/node_modules/*",
+			"*/vendor/*",
+			"*/.git/*",
+			"*/.vscode/*",
+			"/html/*",
+			"/ssl/*"
+		]
+	}
 }
