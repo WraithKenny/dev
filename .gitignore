@@ -19,5 +19,5 @@ vendor/
 /ssl/localhost.csr
 /ssl/localhost.key
 
-sometheme/css
-sometheme/js/bundle.min.js
+some-theme/css
+some-theme/js/bundle.min.js

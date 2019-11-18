@@ -6,8 +6,8 @@ Creates a Local Certificate authority, generates local certs, and wires it up to
 ## Getting Started
 *Please don't run this on a PC. I have no idea what'll happen.*
 
-* run `npx degit WraithKenny/local-ssl`
-* do some light search and replace on a few strings like `sometheme` (rename folder too), `wordpress.org.test`, and `Some_Theme` (See below).
+* run `npx degit WraithKenny/dev`
+* do some light search and replace on a few strings like `some-theme` (rename folder too), `wordpress.org.test`, and `Some_Theme` (See below).
 * then `npm i && npm run dev`
 
 The last command will do a lot of things.
@@ -32,7 +32,7 @@ This `URL` variable is used (and should be changed) in 3 locations
 ## The *Docker Compose* file
 The `docker-compose.yml` file is pretty generic, except its set up for SSL (by mounting some config files and your certs), and it uses environmental vars.
 
-Feel free to change the `.env` file vars. If you change `COMPOSE_PROJECT_NAME`, also rename your theme folder which is named `sometheme` in this repo. Keep in mind, I've used this string as both the folder name of the theme, and the localization string in the theme.
+Feel free to change the `.env` file vars. `COMPOSE_PROJECT_NAME` is so Composer doesn't get confused between projects that are in folders with the same name. Also rename your theme folder which is named `some-theme` in this repo with whatever you change `THEME_FOLDER` to. Keep in mind, I've used this string as both the folder name of the theme, and the localization string in the theme.
 
 ## Extras
 This project is set up for SSL on local dev, hot reloading, SASS Compiling, Babel/Webpack bundling, VSCode boiler, Coding Standards, etc.

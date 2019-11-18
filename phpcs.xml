@@ -7,7 +7,7 @@
 
 	<arg name="colors"/>
 
-	<file>./sometheme/</file>
+	<file>./some-theme/</file>
 
 	<exclude-pattern>*/bin/*</exclude-pattern>
 	<exclude-pattern>/html/*</exclude-pattern>
@@ -63,7 +63,7 @@
 			</property>
 
 			<property name="prefixes" type="array">
-				<element value="sometheme"/>
+				<element value="some_theme"/>
 			</property>
 		</properties>
 	</rule>

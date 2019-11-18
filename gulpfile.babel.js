@@ -18,7 +18,7 @@ let config = {
 	entry: {
 
 		// The entry names have paths so that they are emitted to the right folders!
-		'sometheme/js/bundle.min': [ './sometheme/es6/main.js' ]
+		'some-theme/js/bundle.min': [ './some-theme/es6/main.js' ]
 	},
 	output: {
 		filename: '[name].js',
@@ -51,7 +51,7 @@ let config = {
 
 let devConfig = {
 	entry: {
-		'sometheme/js/bundle.min': [ ...devServer, './sometheme/es6/main.js' ]
+		'some-theme/js/bundle.min': [ ...devServer, './some-theme/es6/main.js' ]
 	},
 	output: config.output,
 	context: config.context,
@@ -102,10 +102,10 @@ function serve( done ) {
 }
 
 let sassFiles = [
-	'sometheme/sass/style.scss',
-	'sometheme/sass/editor-style.scss'
+	'some-theme/sass/style.scss',
+	'some-theme/sass/editor-style.scss'
 ];
-let sassDest = 'sometheme/css';
+let sassDest = 'some-theme/css';
 
 function sass() {
 	return gulp.src( sassFiles )
@@ -143,13 +143,13 @@ function sassDev() {
 
 function watchSass( done ) {
 	gulp.watch([
-		'sometheme/sass/**/*.{scss,sass}'
+		'some-theme/sass/**/*.{scss,sass}'
 	], sassDev );
 	done();
 }
 
 function watchPhp( done ) {
-	gulp.watch([ 'sometheme/**/*.php' ], reload );
+	gulp.watch([ 'some-theme/**/*.php' ], reload );
 	done();
 }
 
