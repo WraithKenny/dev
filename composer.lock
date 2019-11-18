@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "604c9e9b44bf3774842f604a5546a06e",
+    "content-hash": "7b0958a8fb39a298d87ce396c5c40523",
     "packages": [
         {
             "name": "composer/installers",
@@ -235,6 +235,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/favicon-by-realfavicongenerator/"
+        },
+        {
+            "name": "wpackagist-plugin/gutenberg",
+            "version": "6.9.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/gutenberg/",
+                "reference": "tags/6.9.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.6.9.0.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/gutenberg/"
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",
@@ -700,23 +718,23 @@
         },
         {
             "name": "wptrt/wpthemereview",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WPTRT/WPThemeReview.git",
-                "reference": "1141d45d12718e9fca0211b843c51e4dbf681f13"
+                "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/1141d45d12718e9fca0211b843c51e4dbf681f13",
-                "reference": "1141d45d12718e9fca0211b843c51e4dbf681f13",
+                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/462e59020dad9399ed2fe8e61f2a21b5e206e420",
+                "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "phpcompatibility/phpcompatibility-wp": "^2.0",
                 "squizlabs/php_codesniffer": "^3.3.1",
-                "wp-coding-standards/wpcs": "^2.1.0"
+                "wp-coding-standards/wpcs": "^2.2.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
@@ -766,7 +784,7 @@
                 "themes",
                 "wordpress"
             ],
-            "time": "2019-07-18T07:48:56+00:00"
+            "time": "2019-11-17T20:05:55+00:00"
         }
     ],
     "aliases": [],

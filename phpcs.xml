@@ -34,6 +34,10 @@
 		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
 	</rule>
 
+	<rule ref="Generic.Arrays.DisallowShortArraySyntax">
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+	</rule>
+
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">

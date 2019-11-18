@@ -7,9 +7,9 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import postcss from 'gulp-postcss';
 import sourcemaps from 'gulp-sourcemaps';
 import gulpSass from 'gulp-sass';
-import nodeSass from 'node-sass';
+import dartSass from 'sass';
 import through2 from 'through2';
-gulpSass.compiler = nodeSass;
+gulpSass.compiler = dartSass;
 
 // On 'webpack-hot-middleware/client', `?reload=true` tells client to reload if HMR fails.
 const devServer = [ 'webpack/hot/dev-server', 'webpack-hot-middleware/client?reload=true' ];
