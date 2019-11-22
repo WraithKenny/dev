@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b0958a8fb39a298d87ce396c5c40523",
+    "content-hash": "c9b57b406e664daa4ef5d474bf20fcdf",
     "packages": [
         {
             "name": "composer/installers",
@@ -130,15 +130,15 @@
         },
         {
             "name": "wpackagist-plugin/codepress-admin-columns",
-            "version": "3.4.6",
+            "version": "3.4.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/codepress-admin-columns/",
-                "reference": "tags/3.4.6"
+                "reference": "tags/3.4.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/codepress-admin-columns.3.4.6.zip"
+                "url": "https://downloads.wordpress.org/plugin/codepress-admin-columns.3.4.8.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -328,15 +328,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "12.5",
+            "version": "12.5.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/12.5"
+                "reference": "tags/12.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.12.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.12.5.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -574,16 +574,16 @@
         },
         {
             "name": "sirbrillig/phpcs-variable-analysis",
-            "version": "v2.7.0",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sirbrillig/phpcs-variable-analysis.git",
-                "reference": "1b1b2b503a19bb56fa75f4a2d959b12c8ed28c12"
+                "reference": "822db6b1963a7f81e68493ed6ad4652e419777dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sirbrillig/phpcs-variable-analysis/zipball/1b1b2b503a19bb56fa75f4a2d959b12c8ed28c12",
-                "reference": "1b1b2b503a19bb56fa75f4a2d959b12c8ed28c12",
+                "url": "https://api.github.com/repos/sirbrillig/phpcs-variable-analysis/zipball/822db6b1963a7f81e68493ed6ad4652e419777dd",
+                "reference": "822db6b1963a7f81e68493ed6ad4652e419777dd",
                 "shasum": ""
             },
             "require": {
@@ -609,16 +609,16 @@
             ],
             "authors": [
                 {
-                    "name": "Payton Swick",
-                    "email": "payton@foolord.com"
-                },
-                {
                     "name": "Sam Graham",
                     "email": "php-codesniffer-variableanalysis@illusori.co.uk"
+                },
+                {
+                    "name": "Payton Swick",
+                    "email": "payton@foolord.com"
                 }
             ],
             "description": "A PHPCS sniff to detect problems with variables.",
-            "time": "2019-06-24T23:57:11+00:00"
+            "time": "2019-10-10T23:00:08+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

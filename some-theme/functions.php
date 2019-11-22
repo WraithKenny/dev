@@ -81,10 +81,11 @@ add_action( 'tgmpa_register', function() {
 				'force_activation' => true,
 			],
 			[
-				'name'     => 'Advanced Custom Fields Pro',
-				'slug'     => 'advanced-custom-fields-pro',
-				'source'   => 'https://github.com/wp-premium/advanced-custom-fields-pro/archive/master.zip',
-				'required' => true,
+				'name'        => 'Advanced Custom Fields Pro',
+				'slug'        => 'advanced-custom-fields-pro',
+				'source'      => 'https://github.com/wp-premium/advanced-custom-fields-pro/archive/master.zip',
+				'required'    => true,
+				'is_callable' => 'acf',
 			],
 			[
 				'name'     => 'Scripts n Styles',
@@ -97,9 +98,9 @@ add_action( 'tgmpa_register', function() {
 				'is_callable' => 'wpseo_init', // Checks for Plain or Premium.
 			],
 			[
-				'name'     => 'Admin Cols',
+				'name'     => 'Admin Columns',
 				'slug'     => 'codepress-admin-columns',
-				'required' => false,
+				'required' => true,
 			],
 		],
 		[
