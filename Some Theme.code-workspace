@@ -11,6 +11,10 @@
 		{
 			"name": "Docker Volume",
 			"path": "html"
+		},
+		{
+			"name": "2020",
+			"path": "html/wp-content/themes/twentytwenty/"
 		}
 	],
 	"settings": {

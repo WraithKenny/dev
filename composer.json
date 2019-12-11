@@ -12,19 +12,19 @@
   },
   "require": {
     "composer/installers": "*",
-    "wpackagist-plugin/scripts-n-styles": "*",
-    "wpackagist-plugin/wordpress-seo": "*",
-    "wpackagist-plugin/gutenberg": "*",
-    "wpackagist-plugin/debug-bar": "*",
     "wpackagist-plugin/codepress-admin-columns": "*",
-    "wpackagist-plugin/svg-support": "*",
-    "wpackagist-plugin/easy-theme-and-plugin-upgrades": "*",
-    "wpackagist-plugin/favicon-by-realfavicongenerator": "*",
     "wpackagist-plugin/custom-post-type-ui": "*",
+    "wpackagist-plugin/debug-bar": "*",
+    "wpackagist-plugin/easy-theme-and-plugin-upgrades": "*",
+    "wpackagist-plugin/enable-media-replace": "*",
+    "wpackagist-plugin/favicon-by-realfavicongenerator": "*",
+    "wpackagist-plugin/gutenberg": "*",
     "wpackagist-plugin/regenerate-thumbnails": "*",
+    "wpackagist-plugin/scripts-n-styles": "*",
+    "wpackagist-plugin/svg-support": "*",
+    "wpackagist-plugin/theme-check": "*",
     "wpackagist-plugin/wordpress-beta-tester": "*",
-    "wpackagist-plugin/enable-media-replace": "*"
-
+    "wpackagist-plugin/wordpress-seo": "*"
   },
   "extra": {
     "installer-paths": {
