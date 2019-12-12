@@ -17,7 +17,7 @@
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/.git/*</exclude-pattern>
 
-	<!-- <exclude-pattern>*/class-tgm-plugin-activation.php</exclude-pattern> -->
+	<exclude-pattern>*/class-tgm-plugin-activation.php</exclude-pattern>
 
 	<rule ref="WordPress-Extra"/>
 	<rule ref="WordPress-Docs"/>
@@ -42,7 +42,6 @@
 		<properties>
 			<property name="text_domain" type="array">
 				<element value="sometheme"/>
-				<element value="tgmpa"/>
 			</property>
 		</properties>
 	</rule>
@@ -65,8 +64,6 @@
 
 			<property name="prefixes" type="array">
 				<element value="some_theme"/>
-				<element value="load_tgm"/>
-				<element value="TGM"/>
 			</property>
 		</properties>
 	</rule>

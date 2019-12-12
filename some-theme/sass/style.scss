@@ -1,1 +1,9 @@
-// @import "bootstrap/scss/bootstrap";
+@import "bootstrap-vars";
+@import "bootstrap/scss/bootstrap";
+@import "vars";
+@import "defaults";
+@import "wordpress";
+
+.hentry {
+	margin: 50px 0;
+}

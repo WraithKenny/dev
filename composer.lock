@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9b57b406e664daa4ef5d474bf20fcdf",
+    "content-hash": "bda4818a90e020790ce7bdb506bfcdc1",
     "packages": [
         {
             "name": "composer/installers",
@@ -238,15 +238,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "6.9.0",
+            "version": "7.0.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/6.9.0"
+                "reference": "tags/7.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.6.9.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.7.0.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -309,6 +309,24 @@
             "homepage": "https://wordpress.org/plugins/svg-support/"
         },
         {
+            "name": "wpackagist-plugin/theme-check",
+            "version": "20190801.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/theme-check/",
+                "reference": "tags/20190801.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/theme-check.20190801.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/theme-check/"
+        },
+        {
             "name": "wpackagist-plugin/wordpress-beta-tester",
             "version": "2.1.0",
             "source": {
@@ -328,15 +346,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "12.5.1",
+            "version": "12.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/12.5.1"
+                "reference": "tags/12.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.12.5.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.12.7.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -622,16 +640,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.2",
+            "version": "3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "65b12cdeaaa6cd276d4c3033a95b9b88b12701e7"
+                "reference": "557a1fc7ac702c66b0bbfe16ab3d55839ef724cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/65b12cdeaaa6cd276d4c3033a95b9b88b12701e7",
-                "reference": "65b12cdeaaa6cd276d4c3033a95b9b88b12701e7",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
+                "reference": "557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
                 "shasum": ""
             },
             "require": {
@@ -669,7 +687,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-28T04:36:32+00:00"
+            "time": "2019-12-04T04:46:47+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

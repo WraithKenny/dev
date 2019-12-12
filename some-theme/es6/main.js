@@ -1,4 +1,4 @@
-// import 'bootstrap';
+import 'bootstrap';
 
 jQuery( function( $ ) {
 	console.log( $().jquery ) ;
