@@ -1,0 +1,23 @@
+
+// For alignment calculations.
+$whitespace: "(-100vw + 17px + 100%)";
+
+:root {
+	--scrollbar-width: 17px;
+	--white-space: (100% - (100vw - var(--scrollbar-width)));
+}
+
+// Hamburgers.
+$hamburger-padding-x           : 10px;
+$hamburger-padding-y           : 10px;
+$hamburger-layer-width         : 24px;
+$hamburger-layer-height        : 4px;
+$hamburger-layer-spacing       : 4px;
+$hamburger-layer-color         : currentColor;
+$hamburger-hover-opacity       : 1;
+
+/* stylelint-disable */
+$hamburger-types: (
+	3dx
+);
+/* stylelint-enable */

@@ -1,9 +1,6 @@
+@import "vars";
 @import "bootstrap-vars";
 @import "bootstrap/scss/bootstrap";
-@import "vars";
+@import "hamburgers/_sass/hamburgers/hamburgers";
 @import "defaults";
 @import "wordpress";
-
-.hentry {
-	margin: 50px 0;
-}

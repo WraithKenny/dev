@@ -1,1 +1,5 @@
-// @import "bootstrap/scss/bootstrap";
+@import "vars";
+@import "bootstrap-vars";
+@import "bootstrap/scss/bootstrap";
+@import "defaults";
+@import "wordpress";

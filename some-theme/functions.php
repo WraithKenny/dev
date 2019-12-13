@@ -6,7 +6,14 @@
  */
 
 /**
- * Makes Admin Bar less intrusive.
+ * Makes Admin Bar less intrusive on CSS techniques.
+ *
+ * Notes: It removes default styling, i.e., the "bump" which
+ * pushes the page with margins, interfering with some CSS
+ * techniques that require clean height calculations.
+ *
+ * The result is an admin bar that doesn't take space but moves
+ * itself out of the way visually.
  */
 // phpcs:disable
 add_theme_support( 'admin-bar', [ 'callback' => function() {

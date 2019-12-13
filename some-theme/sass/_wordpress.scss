@@ -1,0 +1,53 @@
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+
+	&.focus-visible:focus,
+	:focus &.focus-visible {
+		background-color: #eee;
+		clip: auto !important;
+		clip-path: none;
+		color: #444;
+		display: block;
+		font-size: 1em;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000; /* Above WP toolbar. */
+	}
+}
+
+.alignwide {
+	margin-left: calc(#{$whitespace} / 4);
+	margin-right: calc(#{$whitespace} / 4);
+	max-width: 100vw;
+
+	@supports (color: var(--)) {
+		margin-left: calc(var(--white-space) / 4);
+		margin-right: calc(var(--white-space) / 4);
+	}
+}
+
+.alignfull {
+	margin-left: calc(#{$whitespace} / 2);
+	margin-right: calc(#{$whitespace} / 2);
+	width: auto;
+	max-width: none;
+
+	@supports (color: var(--)) {
+		margin-left: calc(var(--white-space) / 2);
+		margin-right: calc(var(--white-space) / 2);
+	}
+}
