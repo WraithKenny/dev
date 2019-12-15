@@ -1,11 +1,4 @@
 
-// For alignment calculations.
-$whitespace: "(-100vw + 17px + 100%)";
-
-:root {
-	--scrollbar-width: 17px;
-	--white-space: (100% - (100vw - var(--scrollbar-width)));
-}
 
 // Hamburgers.
 $hamburger-padding-x           : 10px;

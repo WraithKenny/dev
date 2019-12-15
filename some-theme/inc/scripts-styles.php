@@ -92,18 +92,49 @@ add_action( 'wp_head', function() {
  */
 add_action( 'wp_body_open', function() {
 	?>
+	<style>
+	:root {
+		--scrollbar-width: 17px;
+		--white-space: (100% - 100vw + var(--scrollbar-width));
+	}
+
+	.alignwide {
+		margin-left: calc((100% - 100vw + 17px) / 4);
+		margin-right: calc((100% - 100vw + 17px) / 4);
+		width: auto;
+		max-width: none;
+	}
+
+	.alignfull {
+		margin-left: calc((100% - 100vw + 17px) / 2);
+		margin-right: calc((100% - 100vw + 17px) / 2);
+		width: auto;
+		max-width: none;
+	}
+
+	@supports (color: var(--)) {
+
+		.alignwide {
+			margin-left: calc(var(--white-space) / 4);
+			margin-right: calc(var(--white-space) / 4);
+		}
+
+		.alignfull {
+			margin-left: calc(var(--white-space) / 2);
+			margin-right: calc(var(--white-space) / 2);
+		}
+	}
+	</style>
 	<script>
 	(function(){
 		var parent = document.createElement('div');
-		parent.setAttribute('style', 'width:30px;height:30px;overscroll-behavior:contain;overflow-y:auto;-webkit-overflow-scrolling:touch;-ms-overflow-style:-ms-autohiding-scrollbar;position:absolute');
+		parent.setAttribute('style', 'width:60px;height:30px;overflow-y:auto;position:absolute');
 		var child = document.createElement('div');
 		child.setAttribute('style', 'width:100%;height:40px');
 		parent.appendChild(child);
 		document.body.appendChild(parent);
-		var scrollbarWidth = 30 - parent.firstChild.clientWidth;
-		if ( scrollbarWidth ) {
-			document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
-		}
+		var scrollbarWidth = 60 - parent.firstChild.clientWidth;
+		document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
 		document.body.removeChild(parent);
 	}());
 	</script>

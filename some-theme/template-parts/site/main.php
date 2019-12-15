@@ -15,4 +15,5 @@
 <?php } else { ?>
 	Nothin'.
 <?php } ?>
+	<?php get_template_part( 'template-parts/pagination' ); ?>
 </main>
