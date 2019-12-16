@@ -17,6 +17,8 @@ services:
         define( 'WP_DEBUG_DISPLAY', false );
         define( 'WP_DEBUG_LOG', true );
         define( 'SAVEQUERIES', true );
+        define( 'SCRIPT_DEBUG', true );
+        define( 'CONCATENATE_SCRIPTS', false );
         define( 'JETPACK_DEV_DEBUG', true );
     volumes:
       - ./html:/var/www/html/
