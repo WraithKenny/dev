@@ -27,6 +27,7 @@ services:
       - ./ssl/localhost.key:/etc/apache2/ssl/localhost.key
       - ./ssl/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./ssl/ssl.load:/etc/apache2/mods-enabled/ssl.load
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   mysql:
     image: mariadb
@@ -50,6 +51,8 @@ services:
     environment:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-simplepassword}
+    volumes:
+      - ./uploads.ini:/usr/local/etc/php/php.ini
 
 volumes:
   data:
