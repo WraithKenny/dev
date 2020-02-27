@@ -28,6 +28,7 @@ add_action( 'wp_enqueue_scripts', function() {
 		[],
 		$debug ? filemtime( get_theme_file_path( 'css/style.css' ) ) : $version
 	);
+	wp_style_add_data( 'sometheme-style', 'async', true );
 
 	wp_enqueue_style(
 		'sometheme-fonts',
@@ -35,6 +36,7 @@ add_action( 'wp_enqueue_scripts', function() {
 		[],
 		$version
 	);
+	wp_style_add_data( 'sometheme-fonts', 'async', true );
 
 	wp_enqueue_script(
 		'sometheme-js',
@@ -43,11 +45,44 @@ add_action( 'wp_enqueue_scripts', function() {
 		$debug ? filemtime( get_theme_file_path( 'js/bundle.min.js' ) ) : $version,
 		true
 	);
+	wp_script_add_data( 'sometheme-js', 'async', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+		wp_script_add_data( 'comment-reply', 'async', true );
 	}
 } );
+
+/**
+ * Defer, or Async, using `wp_script_add_data( 'handle', 'async', true );`.
+ * Derived from Twentytwenty theme.
+ */
+add_filter( 'script_loader_tag', function( $tag, $handle ) {
+	foreach ( [ 'async', 'defer' ] as $attr ) {
+		if ( ! wp_scripts()->get_data( $handle, $attr ) ) {
+			continue;
+		}
+		// Prevent adding attribute when already added in #12009.
+		if ( ! preg_match( ":\s$attr(=|>|\s):", $tag ) ) {
+			$tag = preg_replace( ':(?=></script>):', " $attr", $tag, 1 );
+		}
+		// Only allow async or defer, not both.
+		break;
+	}
+	return $tag;
+}, 10, 2 );
+
+/**
+ * "Defer" CSS using `wp_style_add_data( 'handle', 'async', true );`.
+ * See: https://web.dev/defer-non-critical-css/#optimize
+ */
+add_filter( 'style_loader_tag', function( $tag, $handle, $href, $media ) {
+	if ( wp_styles()->get_data( $handle, 'async' ) ) {
+		$tag = '<link rel="preload" id="' . $handle . '-css" media="' . $media . '" href="' . $href . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">
+		<noscript>' . $tag . '</noscript>';
+	}
+	return $tag;
+}, 10, 4 );
 
 /**
  * From WP's TwentyTwenty Theme.

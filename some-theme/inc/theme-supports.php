@@ -49,14 +49,18 @@ add_action( 'wp_head', function() {
 }, -99 );
 
 /**
- * Add Preconnect tags, early.
+ * Add Preconnect tags.
  */
-add_action( 'wp_head', function() {
-	?>
-	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-	<link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
-	<?php
-}, 0 );
+add_filter( 'wp_resource_hints', function( $urls, $relation_type ) {
+	if ( wp_style_is( 'knitandescape-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+		$urls[] = array(
+			'href' => 'https://fonts.gstatic.com',
+			'crossorigin',
+		);
+	}
+
+	return $urls;
+}, 10, 2 );
 
 /**
  * Add "Skip to content" accessibility functionality, early.

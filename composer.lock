@@ -240,15 +240,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "7.5.0",
+            "version": "7.6.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/7.5.0"
+                "reference": "tags/7.6.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.7.5.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.7.6.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -330,15 +330,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-beta-tester",
-            "version": "2.2.2",
+            "version": "2.2.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-beta-tester/",
-                "reference": "tags/2.2.2"
+                "reference": "tags/2.2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-beta-tester.2.2.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-beta-tester.2.2.6.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
