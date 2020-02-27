@@ -204,15 +204,15 @@
         },
         {
             "name": "wpackagist-plugin/enable-media-replace",
-            "version": "3.3.9",
+            "version": "3.3.10",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/enable-media-replace/",
-                "reference": "tags/3.3.9"
+                "reference": "tags/3.3.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.3.3.9.zip"
+                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.3.3.10.zip"
             },
             "require": {
                 "composer/installers": "~1.0"

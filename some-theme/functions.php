@@ -31,8 +31,35 @@ add_theme_support( 'admin-bar', [ 'callback' => function() {
 } ] );
 // phpcs:enable
 
+require_once get_theme_file_path( 'inc/update-check.php' );
 require_once get_theme_file_path( 'inc/acf.php' );
 require_once get_theme_file_path( 'inc/theme-supports.php' );
 require_once get_theme_file_path( 'inc/alignfull.php' );
 require_once get_theme_file_path( 'inc/scripts-styles.php' );
 require_once get_theme_file_path( 'inc/plugins.php' );
+
+// Fix loopback on local development.
+add_action( 'init', function() {
+	if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
+		return;
+	}
+
+	// Only run if the site is on a local TLD.
+	$tld = end( explode( '.', wp_parse_url( site_url() )['host'] ) );
+	if ( ! in_array( $tld, [ 'test', 'example', 'invalid', 'localhost' ], true ) ) {
+		return;
+	}
+
+	add_filter( 'http_request_args', function( $parsed_args, $url ) {
+
+		$request_domain = wp_parse_url( $url )['host'];
+		$site_domain    = wp_parse_url( get_site_url() )['host'];
+
+		// Loopback request.
+		if ( $site_domain === $request_domain ) {
+			$parsed_args['sslverify'] = false;
+		}
+
+		return $parsed_args;
+	}, 10, 2 );
+});

@@ -7,7 +7,7 @@ Creates a Local Certificate authority, generates local certs, and wires it up to
 *Please don't run this on a PC. I have no idea what'll happen.*
 
 * run `npx degit WraithKenny/dev`
-* do some light search and replace on a few strings like `some-theme` (rename folder too), `wordpress.org.test`, and `Some_Theme` (See below).
+* do some light search and replace on a few strings like `some-theme` (rename folder too), `wordpress.org.test`, and `Some_Theme`, and `sometheme`.
 * then `npm i && npm run dev`
 
 The last command will do a lot of things.
