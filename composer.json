@@ -24,7 +24,8 @@
     "wpackagist-plugin/svg-support": "*",
     "wpackagist-plugin/theme-check": "*",
     "wpackagist-plugin/wordpress-beta-tester": "*",
-    "wpackagist-plugin/wordpress-seo": "*"
+    "wpackagist-plugin/wordpress-seo": "*",
+    "wpackagist-plugin/pwa": "*"
   },
   "extra": {
     "installer-paths": {
