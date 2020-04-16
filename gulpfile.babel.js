@@ -101,11 +101,21 @@ function serve( done ) {
 	}, done );
 }
 
+let sassDest = 'some-theme/css';
 let sassFiles = [
+	'some-theme/sass/inline.scss',
 	'some-theme/sass/style.scss',
 	'some-theme/sass/editor-style.scss'
 ];
-let sassDest = 'some-theme/css';
+let sassInlineFiles = [
+	'some-theme/sass/inline.scss'
+];
+let sassThemeFiles = [
+	'some-theme/sass/style.scss'
+];
+let sassEditorFiles = [
+	'some-theme/sass/editor-style.scss'
+];
 
 function sass() {
 	return gulp.src( sassFiles )
@@ -124,7 +134,41 @@ function sass() {
 }
 
 function sassDev() {
-	return gulp.src( sassFiles )
+	return gulp.src( sassThemeFiles )
+		.pipe( sourcemaps.init() )
+		.pipe( gulpSass({
+			includePaths: [ 'node_modules' ]
+		}).on( 'error', gulpSass.logError ) )
+		.pipe( postcss() )
+		.pipe( sourcemaps.write() )
+		.pipe( through2.obj( function( file, enc, cb ) {
+			var date = new Date();
+			file.stat.atime = date;
+			file.stat.mtime = date;
+			cb( null, file );
+		}) )
+		.pipe( gulp.dest( sassDest ) )
+		.pipe( server.stream() );
+}
+function sassDevEditor() {
+	return gulp.src( sassEditorFiles )
+		.pipe( sourcemaps.init() )
+		.pipe( gulpSass({
+			includePaths: [ 'node_modules' ]
+		}).on( 'error', gulpSass.logError ) )
+		.pipe( postcss() )
+		.pipe( sourcemaps.write() )
+		.pipe( through2.obj( function( file, enc, cb ) {
+			var date = new Date();
+			file.stat.atime = date;
+			file.stat.mtime = date;
+			cb( null, file );
+		}) )
+		.pipe( gulp.dest( sassDest ) )
+		.pipe( server.stream() );
+}
+function sassDevInline() {
+	return gulp.src( sassInlineFiles )
 		.pipe( sourcemaps.init() )
 		.pipe( gulpSass({
 			includePaths: [ 'node_modules' ]
@@ -143,8 +187,20 @@ function sassDev() {
 
 function watchSass( done ) {
 	gulp.watch([
-		'some-theme/sass/**/*.{scss,sass}'
+		'some-theme/sass/inline.scss',
+		'some-theme/sass/common/**/*.{scss,sass}',
+		'some-theme/sass/inline/**/*.{scss,sass}'
+	], sassDevInline );
+	gulp.watch([
+		'some-theme/sass/style.scss',
+		'some-theme/sass/common/**/*.{scss,sass}',
+		'some-theme/sass/theme/**/*.{scss,sass}'
 	], sassDev );
+	gulp.watch([
+		'some-theme/sass/editor-style.scss',
+		'some-theme/sass/common/**/*.{scss,sass}',
+		'some-theme/sass/editor/**/*.{scss,sass}'
+	], sassDevEditor );
 	done();
 }
 

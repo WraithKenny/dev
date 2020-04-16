@@ -16,11 +16,30 @@ add_action( 'wp_enqueue_scripts', function() {
 	 *
 	 * The `filemtime( get_theme_file_path( '.../file' ) )` ensures
 	 * cache busting when in development via WP_DEBUG. Makes
-	 * live-reload enjoyable.
+	 * live-reload more enjoyable.
 	 */
 
 	$debug   = defined( 'WP_DEBUG' ) && true === WP_DEBUG;
 	$version = wp_get_theme()->get( 'Version' );
+
+	if ( $debug ) {
+		// With WP_Debug, use linked style instead of inlined.
+		wp_enqueue_style(
+			'sometheme-inline',
+			get_theme_file_uri( 'css/inline.css' ),
+			[],
+			filemtime( get_theme_file_path( 'css/inline.css' ) )
+		);
+	} else {
+		// Print the "Above the Fold" mobile CSS in the `head`.
+		ob_start();
+		include_once get_theme_file_path( 'css/inline.css' ); // phpcs:disable
+		$css = ob_get_contents();
+		ob_end_clean();
+		wp_register_style( 'sometheme-inline', false );
+		wp_enqueue_style( 'sometheme-inline' );
+		wp_add_inline_style( 'sometheme-inline', $css );
+	}
 
 	wp_enqueue_style(
 		'sometheme-style',
@@ -37,6 +56,13 @@ add_action( 'wp_enqueue_scripts', function() {
 		$version
 	);
 	wp_style_add_data( 'sometheme-fonts', 'async', true );
+
+	// Defer core and plugin css also.
+	wp_style_add_data( 'wp-block-library', 'async', true );
+	wp_style_add_data( 'gforms_reset_css', 'async', true );
+	wp_style_add_data( 'gforms_formsmain_css', 'async', true );
+	wp_style_add_data( 'gforms_ready_class_css', 'async', true );
+	wp_style_add_data( 'gforms_browsers_css', 'async', true );
 
 	wp_enqueue_script(
 		'sometheme-js',
