@@ -1,5 +1,6 @@
 import gulp from 'gulp';
 import path from 'path';
+import Fiber from 'fibers';
 import webpack from 'webpack';
 import BrowserSync from 'browser-sync';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -10,6 +11,18 @@ import gulpSass from 'gulp-sass';
 import dartSass from 'sass';
 import through2 from 'through2';
 gulpSass.compiler = dartSass;
+
+const pipeSass = () => gulpSass({
+	fiber: Fiber,
+	includePaths: [ 'node_modules' ]
+}).on( 'error', gulpSass.logError );
+
+const touch = () => through2.obj( function( file, enc, cb ) {
+	var date = new Date();
+	file.stat.atime = date;
+	file.stat.mtime = date;
+	cb( null, file );
+});
 
 // On 'webpack-hot-middleware/client', `?reload=true` tells client to reload if HMR fails.
 const devServer = [ 'webpack/hot/dev-server', 'webpack-hot-middleware/client?reload=true' ];
@@ -102,33 +115,16 @@ function serve( done ) {
 }
 
 let sassDest = 'some-theme/css';
-let sassFiles = [
-	'some-theme/sass/inline.scss',
-	'some-theme/sass/style.scss',
-	'some-theme/sass/editor-style.scss'
-];
-let sassInlineFiles = [
-	'some-theme/sass/inline.scss'
-];
-let sassThemeFiles = [
-	'some-theme/sass/style.scss'
-];
-let sassEditorFiles = [
-	'some-theme/sass/editor-style.scss'
-];
+let sassInlineFiles = 'some-theme/sass/inline.scss';
+let sassThemeFiles = 'some-theme/sass/style.scss';
+let sassEditorFiles = 'some-theme/sass/editor-style.scss';
+let sassFiles = [ sassInlineFiles, sassThemeFiles, sassEditorFiles ];
 
 function sass() {
 	return gulp.src( sassFiles )
-		.pipe( gulpSass({
-			includePaths: [ 'node_modules' ]
-		}).on( 'error', gulpSass.logError ) )
+		.pipe( pipeSass() )
 		.pipe( postcss() )
-		.pipe( through2.obj( function( file, enc, cb ) {
-			var date = new Date();
-			file.stat.atime = date;
-			file.stat.mtime = date;
-			cb( null, file );
-		}) )
+		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
@@ -136,69 +132,48 @@ function sass() {
 function sassDev() {
 	return gulp.src( sassThemeFiles )
 		.pipe( sourcemaps.init() )
-		.pipe( gulpSass({
-			includePaths: [ 'node_modules' ]
-		}).on( 'error', gulpSass.logError ) )
+		.pipe( pipeSass() )
 		.pipe( postcss() )
 		.pipe( sourcemaps.write() )
-		.pipe( through2.obj( function( file, enc, cb ) {
-			var date = new Date();
-			file.stat.atime = date;
-			file.stat.mtime = date;
-			cb( null, file );
-		}) )
+		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
 function sassDevEditor() {
 	return gulp.src( sassEditorFiles )
 		.pipe( sourcemaps.init() )
-		.pipe( gulpSass({
-			includePaths: [ 'node_modules' ]
-		}).on( 'error', gulpSass.logError ) )
+		.pipe( pipeSass() )
 		.pipe( postcss() )
 		.pipe( sourcemaps.write() )
-		.pipe( through2.obj( function( file, enc, cb ) {
-			var date = new Date();
-			file.stat.atime = date;
-			file.stat.mtime = date;
-			cb( null, file );
-		}) )
+		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
 function sassDevInline() {
 	return gulp.src( sassInlineFiles )
 		.pipe( sourcemaps.init() )
-		.pipe( gulpSass({
-			includePaths: [ 'node_modules' ]
-		}).on( 'error', gulpSass.logError ) )
+		.pipe( pipeSass() )
 		.pipe( postcss() )
 		.pipe( sourcemaps.write() )
-		.pipe( through2.obj( function( file, enc, cb ) {
-			var date = new Date();
-			file.stat.atime = date;
-			file.stat.mtime = date;
-			cb( null, file );
-		}) )
+		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
 
 function watchSass( done ) {
 	gulp.watch([
-		'some-theme/sass/inline.scss',
 		'some-theme/sass/common/**/*.{scss,sass}',
+		'some-theme/sass/inline.scss',
 		'some-theme/sass/inline/**/*.{scss,sass}'
 	], sassDevInline );
 	gulp.watch([
-		'some-theme/sass/style.scss',
 		'some-theme/sass/common/**/*.{scss,sass}',
+		'some-theme/sass/style.scss',
 		'some-theme/sass/theme/**/*.{scss,sass}'
 	], sassDev );
 	gulp.watch([
-		'some-theme/sass/editor-style.scss',
 		'some-theme/sass/common/**/*.{scss,sass}',
+		'some-theme/sass/editor-style.scss',
 		'some-theme/sass/editor/**/*.{scss,sass}'
 	], sassDevEditor );
 	done();
