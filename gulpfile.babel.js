@@ -17,13 +17,6 @@ const pipeSass = () => gulpSass({
 	includePaths: [ 'node_modules' ]
 }).on( 'error', gulpSass.logError );
 
-const touch = () => through2.obj( function( file, enc, cb ) {
-	if ( file.stat ) {
-		file.stat.atime = file.stat.mtime = file.stat.ctime = new Date();
-	}
-	cb( null, file );
-});
-
 // On 'webpack-hot-middleware/client', `?reload=true` tells client to reload if HMR fails.
 const devServer = [ 'webpack/hot/dev-server', 'webpack-hot-middleware/client?reload=true' ];
 
@@ -124,7 +117,6 @@ function sass() {
 	return gulp.src( sassFiles )
 		.pipe( pipeSass() )
 		.pipe( postcss() )
-		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
@@ -135,7 +127,6 @@ function sassDev() {
 		.pipe( pipeSass() )
 		.pipe( postcss() )
 		.pipe( sourcemaps.write() )
-		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
@@ -145,7 +136,6 @@ function sassDevEditor() {
 		.pipe( pipeSass() )
 		.pipe( postcss() )
 		.pipe( sourcemaps.write() )
-		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
@@ -155,7 +145,6 @@ function sassDevInline() {
 		.pipe( pipeSass() )
 		.pipe( postcss() )
 		.pipe( sourcemaps.write() )
-		.pipe( touch() )
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
