@@ -18,9 +18,9 @@ const pipeSass = () => gulpSass({
 }).on( 'error', gulpSass.logError );
 
 const touch = () => through2.obj( function( file, enc, cb ) {
-	var date = new Date();
-	file.stat.atime = date;
-	file.stat.mtime = date;
+	if ( file.stat ) {
+		file.stat.atime = file.stat.mtime = file.stat.ctime = new Date();
+	}
 	cb( null, file );
 });
 
