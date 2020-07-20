@@ -68,7 +68,7 @@
 		</properties>
 	</rule>
 
-	<config name="minimum_supported_wp_version" value="5.4.1"/>
+	<config name="minimum_supported_wp_version" value="5.4.2"/>
 
 	<!-- Necessary to work-around the inability to set minimum php version here. -->
 	<rule ref="./test-version-override.xml"/>

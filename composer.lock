@@ -207,15 +207,15 @@
         },
         {
             "name": "wpackagist-plugin/enable-media-replace",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/enable-media-replace/",
-                "reference": "trunk"
+                "reference": "tags/3.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.zip?timestamp=1591708187"
+                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.3.4.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -243,15 +243,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "8.2.1",
+            "version": "8.5.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/8.2.1"
+                "reference": "tags/8.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.8.2.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.8.5.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -333,15 +333,15 @@
         },
         {
             "name": "wpackagist-plugin/theme-check",
-            "version": "20190801.1",
+            "version": "20200612.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/theme-check/",
-                "reference": "tags/20190801.1"
+                "reference": "tags/20200612.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/theme-check.20190801.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/theme-check.20200612.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -369,15 +369,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "14.3",
+            "version": "14.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/14.3"
+                "reference": "tags/14.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.14.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.14.5.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -389,22 +389,22 @@
     "packages-dev": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v0.6.2",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
-                "reference": "8001af8eb107fbfcedc31a8b51e20b07d85b457a"
+                "reference": "e8d808670b8f882188368faaf1144448c169c0b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/8001af8eb107fbfcedc31a8b51e20b07d85b457a",
-                "reference": "8001af8eb107fbfcedc31a8b51e20b07d85b457a",
+                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/e8d808670b8f882188368faaf1144448c169c0b7",
+                "reference": "e8d808670b8f882188368faaf1144448c169c0b7",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "^5.3|^7",
-                "squizlabs/php_codesniffer": "^2|^3"
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2 || ^3 || 4.0.x-dev"
             },
             "require-dev": {
                 "composer/composer": "*",
@@ -451,7 +451,7 @@
                 "stylecheck",
                 "tests"
             ],
-            "time": "2020-01-29T20:22:20+00:00"
+            "time": "2020-06-25T14:57:39+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
@@ -615,20 +615,20 @@
         },
         {
             "name": "sirbrillig/phpcs-variable-analysis",
-            "version": "v2.8.2",
+            "version": "v2.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sirbrillig/phpcs-variable-analysis.git",
-                "reference": "4a60e8bc9eebdb054a8a4ad41e4518d43d458c47"
+                "reference": "00b4fa3130faa26762c929989e3d958086c627f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sirbrillig/phpcs-variable-analysis/zipball/4a60e8bc9eebdb054a8a4ad41e4518d43d458c47",
-                "reference": "4a60e8bc9eebdb054a8a4ad41e4518d43d458c47",
+                "url": "https://api.github.com/repos/sirbrillig/phpcs-variable-analysis/zipball/00b4fa3130faa26762c929989e3d958086c627f1",
+                "reference": "00b4fa3130faa26762c929989e3d958086c627f1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0",
+                "php": ">=5.4.0",
                 "squizlabs/php_codesniffer": "^3.1"
             },
             "require-dev": {
@@ -659,7 +659,7 @@
                 }
             ],
             "description": "A PHPCS sniff to detect problems with variables.",
-            "time": "2020-05-25T17:00:12+00:00"
+            "time": "2020-07-11T23:32:06+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -763,12 +763,12 @@
             "version": "0.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WPTRT/WPThemeReview.git",
+                "url": "https://github.com/WPTT/WPThemeReview.git",
                 "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/462e59020dad9399ed2fe8e61f2a21b5e206e420",
+                "url": "https://api.github.com/repos/WPTT/WPThemeReview/zipball/462e59020dad9399ed2fe8e61f2a21b5e206e420",
                 "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420",
                 "shasum": ""
             },
