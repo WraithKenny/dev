@@ -45,7 +45,9 @@ add_action( 'init', function() {
 	}
 
 	// Only run if the site is on a local TLD.
-	$tld = end( explode( '.', wp_parse_url( site_url() )['host'] ) );
+	$tld = wp_parse_url( site_url() );
+	$tld = explode( '.', $tld['host'] );
+	$tld = end( $tld );
 	if ( ! in_array( $tld, [ 'test', 'example', 'invalid', 'localhost' ], true ) ) {
 		return;
 	}

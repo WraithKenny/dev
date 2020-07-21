@@ -1,0 +1,10 @@
+.hamburger {
+
+	+ .primary-nav {
+		display: none;
+	}
+
+	&.is-active + .primary-nav {
+		display: block;
+	}
+}
