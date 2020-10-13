@@ -1,19 +1,16 @@
 import gulp from 'gulp';
 import path from 'path';
-import Fiber from 'fibers';
 import webpack from 'webpack';
 import BrowserSync from 'browser-sync';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import postcss from 'gulp-postcss';
 import sourcemaps from 'gulp-sourcemaps';
-import gulpSass from 'gulp-sass';
+import gulpSass from 'gulp-dart-sass';
 import dartSass from 'sass';
-import through2 from 'through2';
 gulpSass.compiler = dartSass;
 
 const pipeSass = () => gulpSass({
-	fiber: Fiber,
 	includePaths: [ 'node_modules' ]
 }).on( 'error', gulpSass.logError );
 
@@ -46,12 +43,12 @@ let config = {
 		]
 	},
 	plugins: [
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery',
-			'window.jQuery': 'jquery',
-			'window.$': 'jquery'
-		})
+		// new webpack.ProvidePlugin({
+		// 	$: 'jquery',
+		// 	jQuery: 'jquery',
+		// 	'window.jQuery': 'jquery',
+		// 	'window.$': 'jquery'
+		// })
 	]
 };
 

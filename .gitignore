@@ -21,3 +21,4 @@ vendor/
 
 some-theme/css
 some-theme/js/bundle.min.js
+some-theme/js/*.LICENSE.txt

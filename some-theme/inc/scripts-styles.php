@@ -67,7 +67,7 @@ add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_script(
 		'sometheme-js',
 		get_theme_file_uri( 'js/bundle.min.js' ),
-		[],
+		[ 'jquery' ],
 		$debug ? filemtime( get_theme_file_path( 'js/bundle.min.js' ) ) : $version,
 		true
 	);
