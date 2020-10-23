@@ -253,15 +253,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "9.1.1",
+            "version": "9.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/9.1.1"
+                "reference": "tags/9.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.9.1.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.9.2.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -379,15 +379,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "15.0",
+            "version": "15.1.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/15.0"
+                "reference": "tags/15.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.15.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.15.1.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -673,16 +673,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.6",
+            "version": "3.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0"
+                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/e97627871a7eab2f70e59166072a6b767d5834e0",
-                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
+                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
                 "shasum": ""
             },
             "require": {
@@ -720,7 +720,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-08-10T04:50:15+00:00"
+            "time": "2020-10-23T02:01:07+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -773,12 +773,12 @@
             "version": "0.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WPTRT/WPThemeReview.git",
+                "url": "https://github.com/WPTT/WPThemeReview.git",
                 "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/462e59020dad9399ed2fe8e61f2a21b5e206e420",
+                "url": "https://api.github.com/repos/WPTT/WPThemeReview/zipball/462e59020dad9399ed2fe8e61f2a21b5e206e420",
                 "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420",
                 "shasum": ""
             },
