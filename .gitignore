@@ -20,5 +20,5 @@ vendor/
 /ssl/localhost.key
 
 some-theme/css
-some-theme/js/bundle.min.js
+some-theme/js/*.min.js
 some-theme/js/*.LICENSE.txt
