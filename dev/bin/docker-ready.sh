@@ -4,7 +4,7 @@
 set -e
 
 # Launch the WordPress docker
-docker-compose up -d
+docker-compose -f dev/docker-compose.yml up -d
 
 # Wait until the docker containers are setup properely
 echo -n "Waiting for server..."

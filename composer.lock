@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85ef0b8112a20e3305aa3d7a110f7873",
+    "content-hash": "f4f4a853824d5dfadc23eee40cbe74b1",
     "packages": [
         {
             "name": "composer/installers",
@@ -221,15 +221,15 @@
         },
         {
             "name": "wpackagist-plugin/enable-media-replace",
-            "version": "3.4.2",
+            "version": "3.5.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/enable-media-replace/",
-                "reference": "tags/3.4.2"
+                "reference": "tags/3.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.3.4.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.3.5.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -257,15 +257,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "9.2.2",
+            "version": "9.3.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/9.2.2"
+                "reference": "tags/9.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.9.2.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.9.3.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -383,15 +383,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "15.2",
+            "version": "15.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/15.2"
+                "reference": "tags/15.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.15.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.15.2.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"

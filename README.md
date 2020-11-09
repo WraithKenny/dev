@@ -22,7 +22,7 @@ The last command will do a lot of things.
  1. Will start *Webpack* and *BrowserSync* in dev mode, opening your browser to your SSL dev environment with Hot Reloading.
 
 ## The URL variable and the local domain
-There's an `npm` script for adding your local domain to your `hosts` file. Change `URL` to match what's in `./ssl/localhost.ext`
+There's an `npm` script for adding your local domain to your `hosts` file. Change `URL` to match what's in `./dev-config/localhost.ext`
 
 This `URL` variable is used (and should be changed) in 3 locations
  1. `package.json` (in the `"add-localhost"` script)
