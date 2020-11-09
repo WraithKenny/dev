@@ -10,11 +10,11 @@
 		},
 		{
 			"name": "Docker Volume",
-			"path": "dev-files/html"
+			"path": "dev/files/html"
 		},
 		{
 			"name": "2020",
-			"path": "dev-files/html/wp-content/themes/twentytwenty/"
+			"path": "dev/files/html/wp-content/themes/twentytwenty/"
 		}
 	],
 	"settings": {
