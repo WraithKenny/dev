@@ -90,8 +90,8 @@ function serve( done ) {
 		open: 'external',
 		logLevel: 'debug',
 		https: {
-			key: './ssl/localhost.key',
-			cert: './ssl/localhost.crt'
+			key: './dev/files/ssl/localhost.key',
+			cert: './dev/files/ssl/localhost.crt'
 		},
 
 		middleware: [

@@ -10,23 +10,21 @@
 		},
 		{
 			"name": "Docker Volume",
-			"path": "html"
+			"path": "dev-files/html"
 		},
 		{
 			"name": "2020",
-			"path": "html/wp-content/themes/twentytwenty/"
+			"path": "dev-files/html/wp-content/themes/twentytwenty/"
 		}
 	],
 	"settings": {
 		"phpcs.showSources": true,
 		"phpcs.ignorePatterns": [
-			"*/bin/*",
-			"*/node_modules/*",
-			"*/vendor/*",
-			"*/.git/*",
-			"*/.vscode/*",
-			"/html/*",
-			"/ssl/*"
+			"/.git/*",
+			"/.vscode/*",
+			"/dev/*",
+			"/node_modules/*",
+			"/vendor/*"
 		]
 	}
 }

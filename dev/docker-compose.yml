@@ -21,10 +21,10 @@ services:
         define( 'CONCATENATE_SCRIPTS', false );
         define( 'JETPACK_DEV_DEBUG', true );
     volumes:
-      - ./html:/var/www/html/
-      - "./${THEME_FOLDER:-some-theme}/:/var/www/html/wp-content/themes/${THEME_FOLDER:-some-theme}/"
-      - ./ssl/localhost.crt:/etc/apache2/ssl/localhost.crt
-      - ./ssl/localhost.key:/etc/apache2/ssl/localhost.key
+      - "../${THEME_FOLDER:-some-theme}/:/var/www/html/wp-content/themes/${THEME_FOLDER:-some-theme}/"
+      - ./files/html:/var/www/html/
+      - ./files/ssl/localhost.crt:/etc/apache2/ssl/localhost.crt
+      - ./files/ssl/localhost.key:/etc/apache2/ssl/localhost.key
       - ./ssl/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./ssl/ssl.load:/etc/apache2/mods-enabled/ssl.load
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini

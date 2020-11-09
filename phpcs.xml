@@ -7,15 +7,13 @@
 
 	<arg name="colors"/>
 
-	<file>./some-theme/</file>
+	<file>./</file>
 
-	<exclude-pattern>*/bin/*</exclude-pattern>
-	<exclude-pattern>/html/*</exclude-pattern>
-	<exclude-pattern>/initdb/*</exclude-pattern>
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>/ssl/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
-	<exclude-pattern>*/.git/*</exclude-pattern>
+	<exclude-pattern>/.git/*</exclude-pattern>
+	<exclude-pattern>/.vscode/*</exclude-pattern>
+	<exclude-pattern>/dev/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
 
 	<exclude-pattern>*/class-tgm-plugin-activation.php</exclude-pattern>
 
@@ -68,10 +66,10 @@
 		</properties>
 	</rule>
 
-	<config name="minimum_supported_wp_version" value="5.4.2"/>
+	<config name="minimum_supported_wp_version" value="5.5.1"/>
 
 	<!-- Necessary to work-around the inability to set minimum php version here. -->
-	<rule ref="./test-version-override.xml"/>
+	<rule ref="./dev/test-version-override.xml"/>
 
 	<rule ref="PHPCompatibility"/>
 	<rule ref="VariableAnalysis"/>

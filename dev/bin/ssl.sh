@@ -11,19 +11,19 @@ NC='\033[0m' # No Color
 
 # Check for required files.
 echo -e "\nChecking required files...\n"
-if [ -f ./ssl/localhost.ext ]
+if [ -f ./dev/localhost.ext ]
 then
-    echo -e "${GREEN}✓${NC} './ssl/localhost.ext' exists."
+    echo -e "${GREEN}✓${NC} './dev/localhost.ext' exists."
 else
-    echo -e "${RED}✗ Missing required file: './ssl/localhost.ext'.${NC}"
+    echo -e "${RED}✗ Missing required file: './dev/localhost.ext'.${NC}"
     exit 1
 fi
 
-if [ -f ./ssl/ca-opts.conf ]
+if [ -f ./dev/ssl/ca-opts.conf ]
 then
-    echo -e "${GREEN}✓${NC} './ssl/ca-opts.conf' exists."
+    echo -e "${GREEN}✓${NC} './dev/ssl/ca-opts.conf' exists."
 else
-    echo -e "${RED}✗ Missing required file: './ssl/ca-opts.conf'.${NC}"
+    echo -e "${RED}✗ Missing required file: './dev/ssl/ca-opts.conf'.${NC}"
     exit 1
 fi
 
@@ -57,7 +57,7 @@ then
 else
     echo -e "${RED}✗${NC} 'localhostCA.pem' not found..."
     echo -e "Creating 'localhostCA.pem' ..."
-    openssl req -x509 -config ./ssl/ca-opts.conf -new -nodes -key ~/.localssl/localhostCA.key -sha256 -days 825 -out ~/.localssl/localhostCA.pem
+    openssl req -x509 -config ./dev/ssl/ca-opts.conf -new -nodes -key ~/.localssl/localhostCA.key -sha256 -days 825 -out ~/.localssl/localhostCA.pem
     echo -e "${GREEN}✓${NC} 'localhostCA.pem' created."
     echo -e "Attempting to Trust the CA..."
     sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ~/.localssl/localhostCA.pem
@@ -66,36 +66,58 @@ fi
 
 echo -e "\nChecking for local files...\n"
 
+# Create folder if needed.
+if [ -d ./dev/files ]
+then
+    echo -e "${GREEN}✓${NC} './dev/files' exists."
+else
+    echo -e "${RED}✗${NC} './dev/files' not found..."
+    echo -e "Creating ./dev/files ..."
+    mkdir -p ./dev/files
+    echo -e "${GREEN}✓${NC} './dev/files' created."
+fi
+
+# Create folder if needed.
+if [ -d ./dev/files/ssl ]
+then
+    echo -e "${GREEN}✓${NC} './dev/files/ssl' exists."
+else
+    echo -e "${RED}✗${NC} './dev/files/ssl' not found..."
+    echo -e "Creating ./dev/files/ssl ..."
+    mkdir -p ./dev/files/ssl
+    echo -e "${GREEN}✓${NC} './dev/files/ssl' created."
+fi
+
 # Create localhost.key if needed.
-if [ -f ./ssl/localhost.key ]
+if [ -f ./dev/files/ssl/localhost.key ]
 then
     echo -e "${GREEN}✓${NC} 'localhost.key' exists."
 else
     echo -e "${RED}✗${NC} 'localhost.key' not found..."
     echo -e "Creating 'localhost.key' ..."
-    openssl genrsa -out ./ssl/localhost.key 2048
+    openssl genrsa -out ./dev/files/ssl/localhost.key 2048
     echo -e "${GREEN}✓${NC} 'localhost.key' created."
 fi
 
 # Create localhost.csr if needed.
-if [ -f ./ssl/localhost.csr ]
+if [ -f ./dev/files/ssl/localhost.csr ]
 then
     echo -e "${GREEN}✓${NC} 'localhost.csr' exists."
 else
     echo -e "${RED}✗${NC} 'localhost.csr' not found..."
     echo -e "Creating 'localhost.csr' ..."
-    openssl req -new -config ./ssl/ca-opts.conf -key ./ssl/localhost.key -out ./ssl/localhost.csr
+    openssl req -new -config ./dev/ssl/ca-opts.conf -key ./dev/files/ssl/localhost.key -out ./dev/files/ssl/localhost.csr
     echo -e "${GREEN}✓${NC} 'localhost.csr' created."
 fi
 
 # Create localhost.crt if needed.
-if [ -f ./ssl/localhost.crt ]
+if [ -f ./dev/files/ssl/localhost.crt ]
 then
     echo -e "${GREEN}✓${NC} 'localhost.crt' exists."
 else
     echo -e "${RED}✗${NC} 'localhost.crt' not found..."
     echo -e "Creating 'localhost.crt' ..."
-    openssl x509 -req -in ./ssl/localhost.csr -CA ~/.localssl/localhostCA.pem -CAkey ~/.localssl/localhostCA.key -CAcreateserial -out ./ssl/localhost.crt -days 825 -sha256 -extfile ./ssl/localhost.ext
+    openssl x509 -req -in ./dev/files/ssl/localhost.csr -CA ~/.localssl/localhostCA.pem -CAkey ~/.localssl/localhostCA.key -CAcreateserial -out ./dev/files/ssl/localhost.crt -days 825 -sha256 -extfile ./dev/localhost.ext
     echo -e "${GREEN}✓${NC} 'localhost.crt' created."
 fi
 

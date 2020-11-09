@@ -11,14 +11,11 @@ node_modules
 bower_modules
 
 vendor/
-/html/
 /.htaccess
 /wp-config.php
 
-/ssl/localhost.crt
-/ssl/localhost.csr
-/ssl/localhost.key
+/dev/files/
 
 some-theme/css
-some-theme/js/bundle.min.js
+some-theme/js/*.min.js
 some-theme/js/*.LICENSE.txt
