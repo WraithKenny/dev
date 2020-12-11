@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   wordpress:
+    container_name: wordpress
     image: wordpress
     restart: always
     ports:
