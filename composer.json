@@ -4,14 +4,10 @@
   "description": "Theme.",
 	"license": "UNLICENSED",
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "*",
-    "phpcompatibility/php-compatibility": "*",
-    "wp-coding-standards/wpcs": "*",
-    "sirbrillig/phpcs-variable-analysis": "*",
+    "composer/installers": "*",
     "wptrt/wpthemereview": "*"
   },
   "require": {
-    "composer/installers": "*",
     "wpackagist-plugin/codepress-admin-columns": "*",
     "wpackagist-plugin/custom-post-type-ui": "*",
     "wpackagist-plugin/debug-bar": "*",
