@@ -69,11 +69,11 @@
     }
   },
   "eslintIgnore": [
+    ".*/**",
     "**/*.min.js",
     "dev/*",
     "node_modules/*",
-    "vendor/*",
-    "bower_components/*"
+    "vendor/*"
   ],
   "stylelint": {
     "extends": [
@@ -85,12 +85,11 @@
       "scss/at-rule-no-unknown": true
     },
     "ignoreFiles": [
-      ".git/*",
+      ".*/**",
       "**/*.min.css",
       "dev/*",
       "node_modules/*",
       "vendor/*",
-      "bower_components/*",
       "some-theme/css/*"
     ]
   },
@@ -106,7 +105,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "@wordpress/babel-preset-default": "^4.19.0",
     "@wordpress/browserslist-config": "^2.7.0",
     "@wordpress/eslint-plugin": "^7.3.0",
@@ -114,7 +113,7 @@
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
     "browserslist": "^4.16.0",
-    "caniuse-lite": "^1.0.30001166",
+    "caniuse-lite": "^1.0.30001168",
     "css-loader": "^5.0.1",
     "cssnano": "^4.1.10",
     "eslint": "^7.15.0",
@@ -129,7 +128,7 @@
     "stylelint": "^13.8.0",
     "stylelint-config-wordpress": "^17.0.0",
     "webpack": "^4.44.2",
-    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-middleware": "^3.7.3",
     "webpack-hot-middleware": "^2.25.0"
   }
 }
