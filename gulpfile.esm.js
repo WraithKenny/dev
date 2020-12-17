@@ -59,6 +59,7 @@ const devConfig = {
 	context: config.context,
 	devtool: 'source-map',
 	module: config.module,
+	externals: config.externals,
 	plugins: [ new webpack.HotModuleReplacementPlugin() ],
 };
 
