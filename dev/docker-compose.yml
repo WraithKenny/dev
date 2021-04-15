@@ -10,8 +10,9 @@ services:
       - "443:443"
     depends_on:
       - mysql
-    environment:
+    environment: &enviro
       WORDPRESS_TABLE_PREFIX: ${DB_PREFIX:-wp_}
+      WORDPRESS_DB_USER: ${DB_USER:-root}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-simplepassword}
       WORDPRESS_DEBUG: 1
       WORDPRESS_CONFIG_EXTRA: |
@@ -21,14 +22,14 @@ services:
         define( 'SCRIPT_DEBUG', true );
         define( 'CONCATENATE_SCRIPTS', false );
         define( 'JETPACK_DEV_DEBUG', true );
-    volumes:
-      - "../${THEME_FOLDER:-some-theme}/:/var/www/html/wp-content/themes/${THEME_FOLDER:-some-theme}/"
-      - ./files/html:/var/www/html/
-      - ./files/ssl/localhost.crt:/etc/apache2/ssl/localhost.crt
-      - ./files/ssl/localhost.key:/etc/apache2/ssl/localhost.key
-      - ./ssl/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
-      - ./ssl/ssl.load:/etc/apache2/mods-enabled/ssl.load
-      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    volumes: &anchor
+      - "./${THEME_FOLDER:-some-theme}/:/var/www/html/wp-content/themes/${THEME_FOLDER:-some-theme}/"
+      - ./dev/files/html:/var/www/html/
+      - ./dev/files/ssl/localhost.crt:/etc/apache2/ssl/localhost.crt
+      - ./dev/files/ssl/localhost.key:/etc/apache2/ssl/localhost.key
+      - ./dev/ssl/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./dev/ssl/ssl.load:/etc/apache2/mods-enabled/ssl.load
+      - ./dev/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   mysql:
     image: mariadb
@@ -36,7 +37,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./initdb:/docker-entrypoint-initdb.d
+      - ./dev/initdb:/docker-entrypoint-initdb.d
       - data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-simplepassword}
@@ -53,7 +54,15 @@ services:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-simplepassword}
     volumes:
-      - ./uploads.ini:/usr/local/etc/php/php.ini
+      - ./dev/uploads.ini:/usr/local/etc/php/php.ini
+
+  cli:
+    image: wordpress:cli
+    depends_on:
+      - wordpress
+    volumes: *anchor
+    user: "33:33"
+    environment: *enviro
 
 volumes:
   data:
