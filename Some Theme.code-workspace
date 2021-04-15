@@ -18,6 +18,8 @@
 		}
 	],
 	"settings": {
+		"phpcs.enable": false,
+		"phpcs.executablePath": "",
 		"phpcs.showSources": true,
 		"phpcs.ignorePatterns": [
 			"/.git/*",
