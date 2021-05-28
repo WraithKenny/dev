@@ -17,7 +17,6 @@ services:
       WORDPRESS_DEBUG: 1
       WORDPRESS_CONFIG_EXTRA: |
         define( 'WP_DEBUG_DISPLAY', false );
-        define( 'WP_DEBUG_LOG', true );
         define( 'SAVEQUERIES', true );
         define( 'SCRIPT_DEBUG', true );
         define( 'CONCATENATE_SCRIPTS', false );
@@ -30,6 +29,7 @@ services:
       - ./dev/ssl/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
       - ./dev/ssl/ssl.load:/etc/apache2/mods-enabled/ssl.load
       - ./dev/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./dev/mu-plugins/fix-loopback.php:/var/www/html/wp-content/mu-plugins/fix-loopback.php
 
   mysql:
     image: mariadb
