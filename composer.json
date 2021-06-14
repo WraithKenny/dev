@@ -4,8 +4,10 @@
   "description": "Theme.",
 	"license": "UNLICENSED",
   "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
     "composer/installers": "*",
-    "wptrt/wpthemereview": "*"
+    "wptrt/wpthemereview": "*",
+    "sirbrillig/phpcs-variable-analysis": "*"
   },
   "require": {
     "wpackagist-plugin/codepress-admin-columns": "*",

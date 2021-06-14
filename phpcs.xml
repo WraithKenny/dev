@@ -17,9 +17,8 @@
 
 	<exclude-pattern>*/class-tgm-plugin-activation.php</exclude-pattern>
 
-	<rule ref="WordPress-Extra"/>
-	<rule ref="WordPress-Docs"/>
 	<rule ref="WPThemeReview"/>
+	<rule ref="WordPress"/>
 
 	<rule ref="PEAR.Functions.FunctionCallSignature">
 		<properties>
@@ -66,7 +65,7 @@
 		</properties>
 	</rule>
 
-	<config name="minimum_supported_wp_version" value="5.5.1"/>
+	<config name="minimum_supported_wp_version" value="5.7.2"/>
 
 	<!-- Necessary to work-around the inability to set minimum php version here. -->
 	<rule ref="./dev/test-version-override.xml"/>
