@@ -1,9 +1,8 @@
 import gulp from 'gulp';
 import path from 'path';
 import webpack from 'webpack';
+import { merge } from 'webpack-merge';
 import BrowserSync from 'browser-sync';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
 import postcss from 'gulp-postcss';
 import sourcemaps from 'gulp-sourcemaps';
 import gulpSass from 'gulp-dart-sass';
@@ -18,13 +17,8 @@ const pipeSass = () =>
 		} )
 		.on( 'error', gulpSass.logError );
 
-const config = {
-	mode: 'production',
-	entry: {
-		// The entry names have paths so that they are emitted to the right folders!
-		'some-theme/js/bundle.min': [ './some-theme/es6/main.js' ],
-		'some-theme/js/bootstrap.min': [ 'bootstrap' ],
-	},
+const common = {
+	target: 'web',
 	output: {
 		filename: '[name].js',
 		path: path.resolve( __dirname ),
@@ -47,21 +41,22 @@ const config = {
 	},
 };
 
-const devConfig = {
+const config = merge( common, {
+	mode: 'production',
+	entry: {
+		// The entry names have paths so that they are emitted to the right folders!
+		'some-theme/js/bundle.min': [ './some-theme/es6/main.js' ],
+		'some-theme/js/bootstrap.min': [ 'bootstrap' ],
+	},
+} );
+
+const devConfig = merge( common, {
 	mode: 'development',
 	entry: {
-		'some-theme/js/bundle.min': [
-			'webpack-hot-middleware/client?reload=true',
-			'./some-theme/es6/main.js',
-		],
+		'some-theme/js/bundle.min': [ './some-theme/es6/main.js' ],
 	},
-	output: config.output,
-	context: config.context,
 	devtool: 'source-map',
-	module: config.module,
-	externals: config.externals,
-	plugins: [ new webpack.HotModuleReplacementPlugin() ],
-};
+} );
 
 const server = BrowserSync.create();
 const compiler = webpack( config );
@@ -70,6 +65,12 @@ const devCompiler = webpack( devConfig );
 function reload( done ) {
 	server.reload();
 	done();
+}
+function reloadJs( done ) {
+	devCompiler.run( () => {
+		server.reload();
+		done();
+	} );
 }
 
 function compile( done ) {
@@ -89,13 +90,6 @@ function serve( done ) {
 				key: './dev/files/ssl/localhost.key',
 				cert: './dev/files/ssl/localhost.crt',
 			},
-
-			middleware: [
-				webpackDevMiddleware( devCompiler, {
-					publicPath: devConfig.output.publicPath,
-				} ),
-				webpackHotMiddleware( devCompiler ),
-			],
 		},
 		done
 	);
@@ -180,7 +174,12 @@ function watchPhp( done ) {
 	done();
 }
 
-const watch = gulp.parallel( watchPhp, watchSass );
+function watchJs( done ) {
+	gulp.watch( [ 'some-theme/es6/**/*.js' ], reloadJs );
+	done();
+}
+
+const watch = gulp.parallel( watchPhp, watchJs, watchSass );
 
 const build = gulp.series( compile, sass );
 const dev = gulp.series( build, sassDev, serve, watch );

@@ -10,5 +10,5 @@ import jQuery from 'jquery';
 
 jQuery( function ( $ ) {
 	// Will use core's version in production.
-	console.log( $().jquery );
+	console.log( $().jquery, 'foo' );
 } );
