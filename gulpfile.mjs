@@ -153,7 +153,7 @@ function sassDevInline() {
 		.pipe( server.stream() );
 }
 
-function watchSass( done ) {
+function watchSass() {
 	gulp.watch(
 		[
 			settings.folder + '/sass/common/**/*.{scss,sass}',
@@ -178,17 +178,14 @@ function watchSass( done ) {
 		],
 		sassDevEditor
 	);
-	done();
 }
 
-function watchPhp( done ) {
+function watchPhp() {
 	gulp.watch( [ settings.folder + '/**/*.php' ], reload );
-	done();
 }
 
-function watchJs( done ) {
+function watchJs() {
 	gulp.watch( [ settings.folder + '/es6/**/*.js' ], compileReload );
-	done();
 }
 
 const watch = gulp.parallel( watchPhp, watchJs, watchSass );
