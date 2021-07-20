@@ -125,7 +125,7 @@
     "browser-sync": "^2.27.4",
     "browserslist": "^4.16.6",
     "caniuse-lite": "^1.0.30001245",
-    "css-loader": "^5.2.7",
+    "css-loader": "^6.2.0",
     "cssnano": "^5.0.6",
     "eslint": "^7.31.0",
     "file-loader": "^6.2.0",
@@ -136,13 +136,11 @@
     "pkg-conf": "^3.1.0",
     "postcss": "^8.3.5",
     "postcss-loader": "^6.1.1",
-    "read-pkg-up": "^3.0.0",
+    "read-pkg-up": "^8.0.0",
     "sass": "^1.35.2",
     "style-loader": "^3.2.1",
     "stylelint": "^13.13.1",
     "webpack": "^5.45.1",
-    "webpack-dev-middleware": "^5.0.0",
-    "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^5.8.0"
   }
 }
