@@ -22,3 +22,4 @@ vendor/
 some-theme/css
 some-theme/js/*.min.js
 some-theme/js/*.LICENSE.txt
+some-theme/js/*.js.map
