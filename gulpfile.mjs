@@ -5,24 +5,29 @@ import { merge } from 'webpack-merge';
 import BrowserSync from 'browser-sync';
 import postcss from 'gulp-postcss';
 import sourcemaps from 'gulp-sourcemaps';
-import gulpSass from 'gulp-sass';
-import dartSass from 'sass';
+import gulpSassC from 'gulp-sass';
+import sass from 'sass';
 import conf from 'pkg-conf';
 import { fileURLToPath } from 'url';
+import through2 from 'through2';
+import lodash from 'lodash';
+import del from 'del';
+
+const { isEqual } = lodash;
 
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = path.dirname( __filename );
 
-const sassGulp = gulpSass( dartSass );
+const gulpSass = gulpSassC( sass );
 const settings = conf.sync( 'dev' );
 
 // Sync is faster than Async, and Fibers is obsolete.
 const pipeSass = () =>
-	sassGulp
+	gulpSass
 		.sync( {
 			includePaths: [ 'node_modules' ],
 		} )
-		.on( 'error', sassGulp.logError );
+		.on( 'error', gulpSass.logError );
 
 const common = {
 	target: 'web',
@@ -50,7 +55,7 @@ const common = {
 
 // BrowserSnyc.
 const server = BrowserSync.create();
-function serve( done ) {
+function serve( cb ) {
 	server.init(
 		{
 			proxy: 'https://' + settings.domain + '.test',
@@ -63,12 +68,12 @@ function serve( done ) {
 				cert: './dev/files/ssl/localhost.crt',
 			},
 		},
-		done
+		cb
 	);
 }
-function reload( done ) {
+function reload( cb ) {
 	server.reload();
-	done();
+	cb();
 }
 
 // For JS Build.
@@ -83,9 +88,9 @@ const config = merge( common, {
 	},
 } );
 const compiler = webpack( config );
-function compile( done ) {
+function compile( cb ) {
 	compiler.run( () => {
-		done();
+		cb();
 	} );
 }
 
@@ -100,101 +105,165 @@ const devConfig = merge( common, {
 	devtool: 'source-map',
 } );
 const devCompiler = webpack( devConfig );
-function compileReload( done ) {
+function compileReload( cb ) {
 	devCompiler.run( () => {
 		server.reload();
-		done();
+		cb();
 	} );
 }
 
-const sassDest = settings.folder + '/css';
-const sassInlineFiles = settings.folder + '/sass/inline.scss';
-const sassThemeFiles = settings.folder + '/sass/style.scss';
-const sassEditorFiles = settings.folder + '/sass/editor-style.scss';
-const sassFiles = [ sassInlineFiles, sassThemeFiles, sassEditorFiles ];
+const sassDest = settings.folder + '/css/';
+const sassFolder = settings.folder + '/sass/';
+const sassFiles = sassFolder + '**/*.{scss,sass}';
 
-function sass() {
+function sassCompile() {
 	return gulp
 		.src( sassFiles )
 		.pipe( pipeSass() )
 		.pipe( postcss() )
-		.pipe( gulp.dest( sassDest ) )
-		.pipe( server.stream() );
+		.pipe( gulp.dest( sassDest ) );
 }
 
-function sassDev() {
+function watchPhp( cb ) {
+	gulp.watch( settings.folder + '/**/*.php', reload );
+	cb();
+}
+
+function watchJs( cb ) {
+	gulp.watch( settings.folder + '/es6/**/*.js', compileReload );
+	cb();
+}
+// Save a collection of partials/dependencies.
+let partials = {};
+const collectPartials = () =>
+	through2.obj( function( file, _, cb ) {
+		let sassStats;
+		let sassName;
+
+		// Until `gulpSass` passes the `stats` obj.
+		if ( file.sassStats ) {
+			sassStats = file.sassStats;
+			sassName = sassStats.entry;
+		} else {
+			// Without changes to gulp-sass, this doubles the compile time.
+			const results = sass.renderSync({
+				file: file.history[0],
+				includePaths: [
+					file.base,
+					'node_modules',
+				]
+			});
+			sassStats = results.stats;
+			sassName = file.history[0];
+		}
+
+		sassName = sassName.replace( file.base + path.sep, sassFolder );
+
+		let files = sassStats.includedFiles
+			.filter( item => item.includes( sassFolder ) )
+			.map( item => item.replace( file.base + path.sep, sassFolder ) );
+
+		const watchfunction = function() {
+			return gulp
+				.src( sassName, { allowEmpty: true } )
+				.pipe( sourcemaps.init() )
+				.pipe( pipeSass() )
+				.pipe( collectPartials() )
+				.pipe( postcss() )
+				.pipe( sourcemaps.write() )
+				.pipe( gulp.dest( sassDest ) )
+				.pipe( server.stream() );
+		}
+		watchfunction.displayName = 'compile ' + sassName;
+
+		if ( partials.hasOwnProperty( sassName ) ) {
+			// Check for dependency changes.
+			if ( ! isEqual( files, partials[ sassName ].files ) ) {
+				// Close old.
+				partials[ sassName ].watcher.close();
+
+				// Updated watcher.
+				const watcher = gulp.watch( files, watchfunction );
+				partials[ sassName ] = {
+					files,
+					watcher
+				};
+			}
+		} else {
+			// New.
+			const watcher = gulp.watch( files, watchfunction );
+			partials[ sassName ] = {
+				files,
+				watcher
+			};
+		}
+
+		cb( null, file );
+	} );
+
+function watchSassFolder( cb ) {
+	// We need to account for added and deleted files.
+	const watcher = gulp.watch( sassFiles, { events: [ 'add', 'unlink' ] } );
+	watcher.on( 'add', function( sassName ) {
+
+		if ( 0 === path.basename( sassName ).indexOf( '_' ) ) {
+			return;
+		}
+
+		if ( path.extname( sassName ) !== '.scss' && path.extname( sassName ) !== '.sass' ) {
+			return;
+		}
+
+		// Create a watcher.
+		const watchfunction = function() {
+			return gulp
+				.src( sassName, { allowEmpty: true } )
+				.pipe( sourcemaps.init() )
+				.pipe( pipeSass() )
+				.pipe( collectPartials() )
+				.pipe( postcss() )
+				.pipe( sourcemaps.write() )
+				.pipe( gulp.dest( sassDest ) )
+				.pipe( server.stream() );
+		}
+		watchfunction.displayName = 'compile ' + sassName;
+
+		const watcher = gulp.watch( sassName, { ignoreInitial: false }, watchfunction );
+		partials[ sassName ] = {
+			sassName,
+			watcher
+		};
+	} );
+	watcher.on( 'unlink', function( sassName ) {
+
+		if ( 0 === path.basename( sassName ).indexOf( '_' ) ) {
+			return;
+		}
+
+		if ( path.extname( sassName ) !== '.scss' && path.extname( sassName ) !== '.sass' ) {
+			return;
+		}
+
+		partials[ sassName ].watcher.close();
+		delete partials[ sassName ];
+
+		const cssName = sassName.replace( sassFolder, sassDest ).replace( path.extname( sassName ), '.css' );
+		del.sync( cssName );
+	} );
+	cb();
+}
+
+function primePartials() {
 	return gulp
-		.src( sassThemeFiles )
-		.pipe( sourcemaps.init() )
+		.src( sassFiles )
 		.pipe( pipeSass() )
-		.pipe( postcss() )
-		.pipe( sourcemaps.write() )
-		.pipe( gulp.dest( sassDest ) )
-		.pipe( server.stream() );
-}
-function sassDevEditor() {
-	return gulp
-		.src( sassEditorFiles )
-		.pipe( sourcemaps.init() )
-		.pipe( pipeSass() )
-		.pipe( postcss() )
-		.pipe( sourcemaps.write() )
-		.pipe( gulp.dest( sassDest ) )
-		.pipe( server.stream() );
-}
-function sassDevInline() {
-	return gulp
-		.src( sassInlineFiles )
-		.pipe( sourcemaps.init() )
-		.pipe( pipeSass() )
-		.pipe( postcss() )
-		.pipe( sourcemaps.write() )
-		.pipe( gulp.dest( sassDest ) )
-		.pipe( server.stream() );
+		.pipe( collectPartials() );
 }
 
-function watchSass( done ) {
-	gulp.watch(
-		[
-			settings.folder + '/sass/common/**/*.{scss,sass}',
-			settings.folder + '/sass/inline.scss',
-			settings.folder + '/sass/inline/**/*.{scss,sass}',
-		],
-		sassDevInline
-	);
-	gulp.watch(
-		[
-			settings.folder + '/sass/common/**/*.{scss,sass}',
-			settings.folder + '/sass/style.scss',
-			settings.folder + '/sass/theme/**/*.{scss,sass}',
-		],
-		sassDev
-	);
-	gulp.watch(
-		[
-			settings.folder + '/sass/common/**/*.{scss,sass}',
-			settings.folder + '/sass/editor-style.scss',
-			settings.folder + '/sass/editor/**/*.{scss,sass}',
-		],
-		sassDevEditor
-	);
-	done();
-}
+const watchSass = gulp.series( primePartials, watchSassFolder );
 
-function watchPhp( done ) {
-	gulp.watch( [ settings.folder + '/**/*.php' ], reload );
-	done();
-}
-
-function watchJs( done ) {
-	gulp.watch( [ settings.folder + '/es6/**/*.js' ], compileReload );
-	done();
-}
-
-const watch = gulp.parallel( watchPhp, watchJs, watchSass );
-
-const build = gulp.series( compile, sass );
-const dev = gulp.series( build, sassDev, serve, watch );
+const build = gulp.series( compile, sassCompile );
+const dev = gulp.series( serve, gulp.parallel( watchPhp, watchJs, watchSass ) );
 
 export { build, dev };
 export default dev;
