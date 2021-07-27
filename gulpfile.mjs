@@ -25,30 +25,6 @@ const pipeSass = () =>
 		} )
 		.on( 'error', gulpSass.logError );
 
-const common = {
-	target: 'web',
-	output: {
-		filename: '[name].js',
-		path: path.resolve( __dirname ),
-		publicPath: '/wp-content/themes',
-	},
-	context: path.resolve( __dirname ),
-	module: {
-		rules: [
-			{
-				test: /\.m?js$/,
-				exclude: /(node_modules|bower_components)/,
-				use: {
-					loader: 'babel-loader',
-				},
-			},
-		],
-	},
-	externals: {
-		jquery: 'jQuery',
-	},
-};
-
 // BrowserSnyc.
 const server = BrowserSync.create();
 function serve( cb ) {
@@ -73,6 +49,30 @@ function reload( cb ) {
 }
 
 // For JS Build.
+const common = {
+	target: 'web',
+	output: {
+		filename: '[name].js',
+		path: path.resolve( __dirname ),
+		publicPath: '/wp-content/themes',
+	},
+	context: path.resolve( __dirname ),
+	module: {
+		rules: [
+			{
+				test: /\.m?js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+				},
+			},
+		],
+	},
+	externals: {
+		jquery: 'jQuery',
+	},
+};
+
 const config = merge( common, {
 	mode: 'production',
 	entry: {
@@ -101,7 +101,7 @@ const devConfig = merge( common, {
 	devtool: 'source-map',
 } );
 const devCompiler = webpack( devConfig );
-function compileReload( cb ) {
+function devCompile( cb ) {
 	devCompiler.run( () => {
 		server.reload();
 		cb();
@@ -119,18 +119,6 @@ function sassCompile() {
 		.pipe( postcss() )
 		.pipe( gulp.dest( sassDest ) );
 }
-
-function watchPhp( cb ) {
-	gulp.watch( settings.folder + '/**/*.php', reload );
-	cb();
-}
-
-function watchJs( cb ) {
-	gulp.watch( settings.folder + '/es6/**/*.js', compileReload );
-	cb();
-}
-
-
 function sassDevCompile() {
 	return gulp
 		.src( sassFiles, {
@@ -144,8 +132,20 @@ function sassDevCompile() {
 		.pipe( gulp.dest( sassDest ) )
 		.pipe( server.stream() );
 }
+
+// Watch Tasks.
 function watchSass( cb ) {
 	gulp.watch( sassFiles, { ignoreInitial: false }, sassDevCompile );
+	cb();
+}
+
+function watchPhp( cb ) {
+	gulp.watch( settings.folder + '/**/*.php', reload );
+	cb();
+}
+
+function watchJs( cb ) {
+	gulp.watch( settings.folder + '/es6/**/*.js', devCompile );
 	cb();
 }
 
