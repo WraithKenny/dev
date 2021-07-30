@@ -338,15 +338,15 @@
         },
         {
             "name": "wpackagist-plugin/svg-support",
-            "version": "2.3.18",
+            "version": "2.3.19",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/svg-support/",
-                "reference": "tags/2.3.18"
+                "reference": "tags/2.3.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/svg-support.2.3.18.zip"
+                "url": "https://downloads.wordpress.org/plugin/svg-support.2.3.19.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -392,15 +392,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "16.7",
+            "version": "16.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/16.7"
+                "reference": "tags/16.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.16.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.16.8.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -536,10 +536,6 @@
                 "phpcs",
                 "standards"
             ],
-            "support": {
-                "issues": "https://github.com/PHPCompatibility/PHPCompatibility/issues",
-                "source": "https://github.com/PHPCompatibility/PHPCompatibility"
-            },
             "time": "2019-12-27T09:44:58+00:00"
         },
         {
@@ -805,11 +801,6 @@
                 "standards",
                 "wordpress"
             ],
-            "support": {
-                "issues": "https://github.com/WordPress/WordPress-Coding-Standards/issues",
-                "source": "https://github.com/WordPress/WordPress-Coding-Standards",
-                "wiki": "https://github.com/WordPress/WordPress-Coding-Standards/wiki"
-            },
             "time": "2020-05-13T23:57:56+00:00"
         },
         {
@@ -880,10 +871,6 @@
                 "themes",
                 "wordpress"
             ],
-            "support": {
-                "issues": "https://github.com/WPTRT/WPThemeReview/issues",
-                "source": "https://github.com/WPTRT/WPThemeReview"
-            },
             "time": "2019-11-17T20:05:55+00:00"
         }
     ],
@@ -894,5 +881,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "1.1.0"
 }
