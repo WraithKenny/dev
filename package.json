@@ -5,9 +5,11 @@
   "scripts": {
     "doc": "docker compose -f dev/docker-compose.yml --project-directory .",
     "start": "./dev/bin/docker-ready.sh",
+    "up": "./dev/bin/up.sh",
+    "ready": "./dev/bin/ready.sh",
     "stop": "npm run doc down",
     "build": "gulp build",
-    "dev": "npm start && gulp dev",
+    "dev": "npm run up & (npm run ready && gulp dev)",
     "docker-clean": "npm run doc -- down -v",
     "bash": "npm run doc run wordpress /bin/bash",
     "savedb": "npm start && docker compose -f dev/docker-compose.yml --project-directory . exec mysql sh -c 'exec mysqldump wordpress -uroot -p\"$MYSQL_ROOT_PASSWORD\"' > ./dev/initdb/data.sql",
