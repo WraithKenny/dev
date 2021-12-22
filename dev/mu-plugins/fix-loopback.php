@@ -1,14 +1,19 @@
 <?php
-// Fix loopback on local development.
+/**
+ * Fix loopback on local development.
+ *
+ * @package Dev
+ */
+
 add_action( 'init', function() {
 	if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
 		return;
 	}
 
 	// Only run if the site is on a local TLD.
-	$host = wp_parse_url( site_url() )['host'];
+	$host  = wp_parse_url( site_url() )['host'];
 	$parts = explode( '.', $host );
-	$tld = end( $parts );
+	$tld   = end( $parts );
 	if ( ! in_array( $tld, [ 'test', 'example', 'invalid', 'localhost' ], true ) ) {
 		return;
 	}
