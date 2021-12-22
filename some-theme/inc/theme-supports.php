@@ -56,7 +56,7 @@ add_action( 'wp_head', function() {
  * Add Preconnect tags.
  */
 add_filter( 'wp_resource_hints', function( $urls, $relation_type ) {
-	if ( wp_style_is( 'knitandescape-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+	if ( wp_style_is( 'sometheme-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
 		$urls[] = array(
 			'href' => 'https://fonts.gstatic.com',
 			'crossorigin',
