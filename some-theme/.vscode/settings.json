@@ -1,8 +1,5 @@
 {
 	"phpcs.enable": true,
 	"phpcs.standard": "../phpcs.xml",
-	"phpcs.executablePath": "../vendor/bin/phpcs",
-	"eslint.workingDirectories": [
-		"../"
-	]
+	"phpcs.executablePath": "../vendor/bin/phpcs"
 }

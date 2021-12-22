@@ -1,11 +1,11 @@
 import process from 'process';
 import path from 'path';
-import conf from 'pkg-conf';
+import { packageConfigSync } from 'pkg-conf';
 
-const dev = conf.sync( 'dev' );
+const dev = packageConfigSync( 'dev' );
 if ( ! dev.hasOwnProperty( 'folder' ) ) {
 	console.error( 'Error: Please set a `dev.folder` in your `package.json`.' );
-	process.exit(0);
+	process.exit( 0 );
 }
 
 const folder = path.normalize( dev.folder );
@@ -34,7 +34,7 @@ const settings = {
 	folder,
 	domain,
 	sass,
-	js
+	js,
 };
 
 export default settings;
