@@ -11,7 +11,7 @@
 
 	<exclude-pattern>/.git/*</exclude-pattern>
 	<exclude-pattern>/.vscode/*</exclude-pattern>
-	<exclude-pattern>*/dev/files/*</exclude-pattern>
+	<exclude-pattern>/dev/files/*</exclude-pattern>
 	<exclude-pattern>/node_modules/*</exclude-pattern>
 	<exclude-pattern>/vendor/*</exclude-pattern>
 

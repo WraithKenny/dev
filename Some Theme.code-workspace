@@ -24,7 +24,7 @@
 		"phpcs.ignorePatterns": [
 			"/.git/*",
 			"/.vscode/*",
-			"/dev/*",
+			"/dev/files/*",
 			"/node_modules/*",
 			"/vendor/*"
 		]
