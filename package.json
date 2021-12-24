@@ -79,7 +79,7 @@
   ],
   "stylelint": {
     "extends": [
-      "@wordpress/stylelint-config"
+      "./dev/stylelint-config/scss"
     ],
     "rules": {
       "at-rule-empty-line-before": null,
@@ -121,7 +121,7 @@
     "browser-sync": "^2.27.7",
     "browserslist": "^4.19.1",
     "caniuse-lite": "^1.0.30001292",
-    "core-js": "^3.20.0",
+    "core-js": "^3.20.1",
     "css-loader": "^6.5.1",
     "cssnano": "^5.0.14",
     "del": "^6.0.0",
@@ -137,6 +137,8 @@
     "sass": "^1.45.1",
     "style-loader": "^3.3.1",
     "stylelint": "^14.2.0",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-config-recommended-scss": "^5.0.2",
     "webpack": "^5.65.0",
     "webpack-merge": "^5.8.0"
   }

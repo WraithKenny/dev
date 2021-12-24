@@ -18,6 +18,10 @@
 		}
 	],
 	"settings": {
+		"css.validate": false,
+		"less.validate": false,
+		"scss.validate": false,
+		"stylelint.validate": ["css", "scss"],
 		"phpcs.enable": false,
 		"phpcs.executablePath": "",
 		"phpcs.showSources": true,
