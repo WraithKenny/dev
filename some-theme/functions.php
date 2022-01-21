@@ -36,4 +36,3 @@ require_once get_theme_file_path( 'inc/acf.php' );
 require_once get_theme_file_path( 'inc/theme-supports.php' );
 require_once get_theme_file_path( 'inc/alignfull.php' );
 require_once get_theme_file_path( 'inc/scripts-styles.php' );
-require_once get_theme_file_path( 'inc/plugins.php' );
