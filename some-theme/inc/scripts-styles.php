@@ -111,30 +111,17 @@ add_filter( 'style_loader_tag', function( $tag, $handle, $href, $media ) {
 }, 10, 4 );
 
 /**
- * From WP's TwentyTwenty Theme.
- *
- * Fix skip link focus in IE11.
- *
- * This does not enqueue the script because it is tiny and because it is only for IE11,
- * thus it does not warrant having an entire dedicated blocking script being loaded.
- *
- * @link https://git.io/vWdr2
+ * Add No-JS Class.
+ * If we're missing JavaScript support, the Body element will have a no-js class.
  */
-add_action( 'wp_print_footer_scripts', function() {
-	// The following is minified via `terser --compress --mangle -- assets/js/skip-link-focus-fix.js`. (in TwentyTwenty).
+add_action( 'wp_body_open', function() {
 	?>
-	<script>/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);</script>
+	<script>document.body.classList.remove("no-js");</script>
 	<?php
 } );
-
-/**
- * Add No-JS Class.
- * If we're missing JavaScript support, the HTML element will have a no-js class.
- */
-add_action( 'wp_head', function() {
-	?>
-	<script>document.documentElement.className = document.documentElement.className.replace('no-js','js');</script>
-	<?php
+add_filter( 'body_class', function( $classes ) {
+	$classes[] = 'no-js';
+	return $classes;
 } );
 
 /**
