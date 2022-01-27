@@ -79,7 +79,7 @@
   ],
   "stylelint": {
     "extends": [
-      "./dev/stylelint-config/scss"
+      "@wordpress/stylelint-config/scss"
     ],
     "rules": {
       "at-rule-empty-line-before": null,
@@ -110,20 +110,20 @@
     "swiper": "^7.4.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.8",
-    "@wordpress/babel-preset-default": "^6.4.1",
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@wordpress/babel-preset-default": "^6.5.0",
     "@wordpress/browserslist-config": "^4.1.0",
-    "@wordpress/eslint-plugin": "^10.0.1-next.33ec3857e2.0",
-    "@wordpress/stylelint-config": "^19.1.1-next.33ec3857e2.0",
+    "@wordpress/eslint-plugin": "^10.0.0",
+    "@wordpress/stylelint-config": "^20.0.0",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
     "browser-sync": "^2.27.7",
     "browserslist": "^4.19.1",
-    "caniuse-lite": "^1.0.30001300",
+    "caniuse-lite": "^1.0.30001303",
     "core-js": "^3.20.3",
     "css-loader": "^6.5.1",
-    "cssnano": "^5.0.15",
+    "cssnano": "^5.0.16",
     "del": "^6.0.0",
     "eslint": "^8.7.0",
     "file-loader": "^6.2.0",
@@ -134,12 +134,12 @@
     "pkg-conf": "^4.0.0",
     "postcss": "^8.4.5",
     "postcss-loader": "^6.2.1",
-    "sass": "^1.48.0",
+    "sass": "^1.49.0",
     "style-loader": "^3.3.1",
-    "stylelint": "^14.2.0",
+    "stylelint": "^14.3.0",
     "stylelint-config-recommended": "^6.0.0",
     "stylelint-config-recommended-scss": "^5.0.2",
-    "webpack": "^5.66.0",
+    "webpack": "^5.67.0",
     "webpack-merge": "^5.8.0"
   }
 }
