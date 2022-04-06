@@ -33,10 +33,10 @@ add_action( 'wp_enqueue_scripts', function() {
 	} else {
 		// Print the "Above the Fold" mobile CSS in the `head`.
 		ob_start();
-		include_once get_theme_file_path( 'css/inline.css' ); // phpcs:disable
+		include_once get_theme_file_path( 'css/inline.css' ); // phpcs:ignore
 		$css = ob_get_contents();
 		ob_end_clean();
-		wp_register_style( 'sometheme-inline', false );
+		wp_register_style( 'sometheme-inline', false ); // phpcs:ignore
 		wp_enqueue_style( 'sometheme-inline' );
 		wp_add_inline_style( 'sometheme-inline', $css );
 	}
@@ -105,6 +105,7 @@ add_filter( 'script_loader_tag', function( $tag, $handle ) {
  */
 add_filter( 'style_loader_tag', function( $tag, $handle, $href, $media ) {
 	if ( wp_styles()->get_data( $handle, 'async' ) ) {
+		// phpcs:ignore
 		$tag = '<link rel="stylesheet" id="' . $handle . '-css" media="print" href="' . $href . '" onload="this.media=\'' . $media . '\';this.onload=null;">
 		<noscript>' . $tag . '</noscript>';
 	}
