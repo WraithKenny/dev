@@ -1,75 +1,69 @@
 <?xml version="1.0"?>
 <ruleset name="Coding Standards">
-	<arg value="sv"/>
+	<arg value="spv"/>
 	<arg name="parallel" value="8"/>
 	<arg name="cache"/>
 	<arg name="extensions" value="php"/>
 
 	<arg name="colors"/>
 
-	<file>./</file>
+	<file>./some-theme/</file>
 
-	<exclude-pattern>/.git/*</exclude-pattern>
-	<exclude-pattern>/.vscode/*</exclude-pattern>
+	<exclude-pattern>*/.vscode/*</exclude-pattern>
 	<exclude-pattern>/dev/files/*</exclude-pattern>
-	<exclude-pattern>/node_modules/*</exclude-pattern>
-	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>*/.git/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
 
-	<exclude-pattern>*/class-tgm-plugin-activation.php</exclude-pattern>
+	<rule ref="VariableAnalysis"/>
 
-	<rule ref="WPThemeReview"/>
-	<rule ref="WordPress"/>
+	<rule ref="WPThemeReview">
+		<!-- These are bugged. -->
+		<exclude name="WPThemeReview.CoreFunctionality.PrefixAllGlobals"/>
+		<exclude name="WPThemeReview.Plugins.CorrectTGMPAVersion"/>
+	</rule>
 
+	<!-- For some reason, WordPress set needs to also be
+		included, even tho WPThemeReview includes it. -->
+	<rule ref="WordPress">
+		<!-- These are bugged. -->
+		<exclude name="WordPress.WP.I18n"/>
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals"/>
+	</rule>
+
+	<!-- Better Admin Bump. -->
+	<rule ref="WPThemeReview">
+		<exclude name="WPThemeReview.PluginTerritory.AdminBarRemoval.HidingDetected"/>
+	</rule>
+
+	<!-- Better function signatures -->
 	<rule ref="PEAR.Functions.FunctionCallSignature">
 		<properties>
 			 <property name="allowMultipleArguments" value="true" />
 		</properties>
 	</rule>
-
 	<rule ref="PEAR.Functions.FunctionCallSignature">
 		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
 		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
 	</rule>
 
+	<!-- Better Arrays -->
 	<rule ref="Generic.Arrays.DisallowShortArraySyntax">
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
 	</rule>
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
-	<rule ref="WordPress.WP.I18n">
-		<properties>
-			<property name="text_domain" type="array">
-				<element value="sometheme"/>
-			</property>
-		</properties>
-	</rule>
-
+	<!-- Is a theme -->
 	<rule ref="WordPress.Files.FileName">
 		<properties>
 			<property name="is_theme" value="true" />
 		</properties>
 	</rule>
 
-	<rule ref="WPThemeReview.CoreFunctionality.PrefixAllGlobals">
-		<properties>
-			<!-- This list of folders to treat the file variables as local to a function, rather than global. -->
-			<property name="allowed_folders" type="array">
-				<element value="template-parts"/>
-				<element value="templates"/>
-				<element value="partials"/>
-				<element value="page-templates"/>
-			</property>
+	<!-- Latest WP -->
+	<config name="minimum_supported_wp_version" value="5.9.2"/>
 
-			<property name="prefixes" type="array">
-				<element value="some_theme"/>
-			</property>
-		</properties>
-	</rule>
-
-	<config name="minimum_supported_wp_version" value="5.7.2"/>
-
-	<!-- Necessary to work-around the inability to set minimum php version here. -->
+	<!-- Latest PHP -->
 	<rule ref="./dev/test-version-override.xml"/>
 
-	<rule ref="PHPCompatibility"/>
-	<rule ref="VariableAnalysis"/>
 </ruleset>
