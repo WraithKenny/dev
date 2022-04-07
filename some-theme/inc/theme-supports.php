@@ -57,10 +57,10 @@ add_action( 'wp_head', function() {
  */
 add_filter( 'wp_resource_hints', function( $urls, $relation_type ) {
 	if ( wp_style_is( 'sometheme-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
-		$urls[] = array(
+		$urls[] = [
 			'href' => 'https://fonts.gstatic.com',
 			'crossorigin',
-		);
+		];
 	}
 
 	return $urls;

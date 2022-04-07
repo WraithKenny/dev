@@ -33,10 +33,10 @@ add_action( 'wp_enqueue_scripts', function() {
 	} else {
 		// Print the "Above the Fold" mobile CSS in the `head`.
 		ob_start();
-		include_once get_theme_file_path( 'css/inline.css' ); // phpcs:ignore
+		include_once get_theme_file_path( 'css/inline.css' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		$css = ob_get_contents();
 		ob_end_clean();
-		wp_register_style( 'sometheme-inline', false ); // phpcs:ignore
+		wp_register_style( 'sometheme-inline', false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		wp_enqueue_style( 'sometheme-inline' );
 		wp_add_inline_style( 'sometheme-inline', $css );
 	}
@@ -49,11 +49,12 @@ add_action( 'wp_enqueue_scripts', function() {
 	);
 	wp_style_add_data( 'sometheme-style', 'async', true );
 
-	wp_enqueue_style(
+	// Needs null version, if more than 1 family is used.
+	wp_enqueue_style( // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		'sometheme-fonts',
 		'https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:300,300i,400,400i,600,600i&display=swap',
 		[],
-		$version
+		null
 	);
 	wp_style_add_data( 'sometheme-fonts', 'async', true );
 
@@ -105,7 +106,7 @@ add_filter( 'script_loader_tag', function( $tag, $handle ) {
  */
 add_filter( 'style_loader_tag', function( $tag, $handle, $href, $media ) {
 	if ( wp_styles()->get_data( $handle, 'async' ) ) {
-		// phpcs:ignore
+		// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 		$tag = '<link rel="stylesheet" id="' . $handle . '-css" media="print" href="' . $href . '" onload="this.media=\'' . $media . '\';this.onload=null;">
 		<noscript>' . $tag . '</noscript>';
 	}
