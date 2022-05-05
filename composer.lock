@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "75e5ef05436c90ac565a48176cc7465991908352"
+                "reference": "af93ba6e52236418f07a278033eba6959ee5b983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/75e5ef05436c90ac565a48176cc7465991908352",
-                "reference": "75e5ef05436c90ac565a48176cc7465991908352",
+                "url": "https://api.github.com/repos/composer/installers/zipball/af93ba6e52236418f07a278033eba6959ee5b983",
+                "reference": "af93ba6e52236418f07a278033eba6959ee5b983",
                 "shasum": ""
             },
             "require": {
@@ -132,7 +132,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v2.1.0"
+                "source": "https://github.com/composer/installers/tree/v2.1.1"
             },
             "funding": [
                 {
@@ -148,7 +148,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-18T12:27:54+00:00"
+            "time": "2022-04-13T09:13:00+00:00"
         },
         {
             "name": "wpackagist-plugin/codepress-admin-columns",
@@ -188,15 +188,15 @@
         },
         {
             "name": "wpackagist-plugin/debug-bar",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/debug-bar/",
-                "reference": "tags/1.1.2"
+                "reference": "tags/1.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/debug-bar.1.1.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/debug-bar.1.1.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -242,7 +242,7 @@
         },
         {
             "name": "wpackagist-plugin/favicon-by-realfavicongenerator",
-            "version": "1.3.23",
+            "version": "1.3.25",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/favicon-by-realfavicongenerator/",
@@ -250,7 +250,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip?timestamp=1648624567"
+                "url": "https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip?timestamp=1651575183"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -260,15 +260,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "12.9.0",
+            "version": "13.1.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/12.9.0"
+                "reference": "tags/13.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.12.9.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.13.1.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -278,15 +278,15 @@
         },
         {
             "name": "wpackagist-plugin/pwa",
-            "version": "0.6.0",
+            "version": "0.7.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pwa/",
-                "reference": "tags/0.6.0"
+                "reference": "tags/0.7.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pwa.0.6.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/pwa.0.7.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -368,15 +368,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-beta-tester",
-            "version": "3.1.5",
+            "version": "3.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-beta-tester/",
-                "reference": "tags/3.1.5"
+                "reference": "tags/3.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-beta-tester.3.1.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-beta-tester.3.2.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -386,15 +386,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "18.5.1",
+            "version": "18.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/18.5.1"
+                "reference": "tags/18.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.18.5.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.18.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
