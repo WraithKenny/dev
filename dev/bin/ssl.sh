@@ -67,7 +67,7 @@ fi
 # Check if localhostCA.pem is expired or otherwise invalid.
 if openssl x509 -checkend 0 -noout -in ~/.localssl/localhostCA.pem
 then
-	echo -e "${RED}✗${NC} Certificate is valid."
+	echo -e "${GREEN}✓${NC} Certificate is valid."
 else
 	echo -e "${RED}✗${NC} Certificate has expired (or is invalid/not found)"
 	# Try to renew.
