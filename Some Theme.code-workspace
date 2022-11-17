@@ -19,6 +19,10 @@
 		{
 			"name": "2022",
 			"path": "dev/files/html/wp-content/themes/twentytwentytwo/"
+		},
+		{
+			"name": "2023",
+			"path": "dev/files/html/wp-content/themes/twentytwentythree/"
 		}
 	],
 	"settings": {

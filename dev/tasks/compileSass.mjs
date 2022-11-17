@@ -9,4 +9,4 @@ export default function compileSass() {
 		.pipe( pipeSass() )
 		.pipe( postcss() )
 		.pipe( gulp.dest( s.sass.dest ) );
-};
+}

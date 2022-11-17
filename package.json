@@ -95,9 +95,9 @@
     "ignoreFiles": [
       ".*/**",
       "**/*.min.css",
-      "dev/files/*",
-      "node_modules/*",
-      "vendor/*",
+      "dev/files/**",
+      "node_modules/**",
+      "vendor/**",
       "some-theme/css/*"
     ]
   },

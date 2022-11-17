@@ -11,7 +11,7 @@ const cwd = process.cwd();
 function compileSassDev() {
 	return gulp
 		.src( s.sass.src, {
-			allowEmpty: true
+			allowEmpty: true,
 		} )
 		.pipe( sourcemaps.init() )
 		.pipe( pipeSass() )
@@ -24,4 +24,4 @@ function compileSassDev() {
 export default function watchSass( cb ) {
 	gulp.watch( s.sass.src, { ignoreInitial: false, cwd }, compileSassDev );
 	cb();
-};
+}
