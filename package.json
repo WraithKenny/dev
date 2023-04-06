@@ -139,7 +139,7 @@
     "stylelint": "^15.4.0",
     "stylelint-config-recommended": "^11.0.0",
     "stylelint-config-recommended-scss": "^9.0.1",
-    "webpack": "^5.78.0",
+    "webpack": "^5.76.0",
     "webpack-merge": "^5.8.0"
   },
   "pnpm": {
