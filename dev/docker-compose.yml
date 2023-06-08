@@ -51,6 +51,7 @@ services:
       - 8080:80
     environment:
       PMA_HOST: mysql
+      UPLOAD_LIMIT: 300M
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-simplepassword}
     volumes:
       - ./dev/uploads.ini:/usr/local/etc/php/php.ini
